@@ -3,7 +3,7 @@
 class M_kader extends CI_Model
 {
     public $table = 'kader';
-    public $id = 'id';
+    public $id = 'kader.id';
     public $order = 'DESC';
 
     public function total_rows()
@@ -12,9 +12,14 @@ class M_kader extends CI_Model
         return $this->db->count_all_results();
     }
 
-    function get_limit_data()
+    function get_limit_data($id = 0)
     {
+        $this->db->select('kader.* , posyandu.nama as posyandu_nama');
+        $this->db->join('posyandu', 'kader.posyandu_id = posyandu.id');
         $this->db->order_by($this->id, $this->order);
+        if ($id != 0) {
+            $this->db->where('kader.posyandu_id', '$id');
+        }
         return $this->db->get($this->table)->result();
     }
 

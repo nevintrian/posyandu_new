@@ -3,7 +3,7 @@
 class M_ibu extends CI_Model
 {
     public $table = 'ibu';
-    public $id = 'id';
+    public $id = 'ibu.id';
     public $order = 'DESC';
 
     public function total_rows()
@@ -14,6 +14,8 @@ class M_ibu extends CI_Model
 
     function get_limit_data()
     {
+        $this->db->select('ibu.* , posyandu.nama as posyandu_nama');
+        $this->db->join('posyandu', 'ibu.posyandu_id = posyandu.id');
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
     }

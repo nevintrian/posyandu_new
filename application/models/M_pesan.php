@@ -1,9 +1,9 @@
 <?php
 
-class M_posyandu extends CI_Model
+class M_pesan extends CI_Model
 {
-    public $table = 'posyandu';
-    public $id = 'id';
+    public $table = 'pesan';
+    public $id = 'pesan.id';
     public $order = 'DESC';
 
     public function total_rows()
@@ -15,11 +15,8 @@ class M_posyandu extends CI_Model
     function get_limit_data()
     {
         $this->db->order_by($this->id, $this->order);
-        return $this->db->get($this->table)->result();
-    }
-
-    function get_limit_data_asc()
-    {
+        $this->db->select('pesan.* , posyandu.nama as posyandu_nama');
+        $this->db->join('posyandu', 'pesan.posyandu_id = posyandu.id');
         return $this->db->get($this->table)->result();
     }
 

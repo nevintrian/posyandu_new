@@ -3,7 +3,7 @@
 class M_balita extends CI_Model
 {
     public $table = 'balita';
-    public $id = 'id';
+    public $id = 'balita.id';
     public $order = 'DESC';
 
     public function total_rows()
@@ -15,6 +15,8 @@ class M_balita extends CI_Model
     function get_limit_data()
     {
         $this->db->order_by($this->id, $this->order);
+        $this->db->select('balita.* , posyandu.nama as posyandu_nama');
+        $this->db->join('posyandu', 'balita.posyandu_id = posyandu.id');
         return $this->db->get($this->table)->result();
     }
 

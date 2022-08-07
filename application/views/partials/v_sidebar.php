@@ -10,6 +10,23 @@
   <link rel="stylesheet" href="templates/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="templates/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <link rel="stylesheet" href="templates/dist/css/adminlte.min.css">
+  <style>
+    @media screen and (max-width: 900px) {
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .posyandu-header {
+        overflow-x: scroll;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -199,8 +216,11 @@
                 </a>
               </li>
             <?php
+            } else {
+              redirect('login');
             }
             ?>
+
           </ul>
         </nav>
       </div>

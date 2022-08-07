@@ -12,14 +12,20 @@ class M_kader extends CI_Model
         return $this->db->count_all_results();
     }
 
-    function get_limit_data($id = 0)
+    function get_limit_data()
     {
         $this->db->select('kader.* , posyandu.nama as posyandu_nama');
         $this->db->join('posyandu', 'kader.posyandu_id = posyandu.id');
         $this->db->order_by($this->id, $this->order);
-        if ($id != 0) {
-            $this->db->where('kader.posyandu_id', '$id');
-        }
+        return $this->db->get($this->table)->result();
+    }
+
+    function get_limit_data_posyandu($id)
+    {
+        $this->db->select('kader.* , posyandu.nama as posyandu_nama');
+        $this->db->join('posyandu', 'kader.posyandu_id = posyandu.id');
+        $this->db->where('posyandu.id',  $id);
+        $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
     }
 

@@ -13,11 +13,11 @@ class Kader extends CI_Controller
         $this->load->library('upload');
     }
 
-    public function index($id = 0)
+    public function index()
     {
         $this->load->view('partials/v_sidebar');
         $config['total_rows'] = $this->m_kader->total_rows();
-        $kader = $this->m_kader->get_limit_data($id);
+        $kader = $this->m_kader->get_limit_data();
         $posyandu = $this->m_posyandu->get_limit_data_asc();
         $this->pagination->initialize($config);
         $data = array(
@@ -29,6 +29,23 @@ class Kader extends CI_Controller
         $this->load->view('v_kader', $data);
         $this->load->view('partials/v_footer');
     }
+
+    public function posyandu($id)
+    {
+        $this->load->view('partials/v_sidebar');
+        $config['total_rows'] = $this->m_kader->total_rows();
+        $kader = $this->m_kader->get_limit_data_posyandu($id);
+        $posyandu = $this->m_posyandu->get_limit_data_asc();
+        $data = array(
+            'kader_data' => $kader,
+            'total_rows' => $config['total_rows'],
+            'posyandu_data' => $posyandu
+        );
+
+        $this->load->view('v_kader', $data);
+        $this->load->view('partials/v_footer');
+    }
+
 
     public function save()
     {

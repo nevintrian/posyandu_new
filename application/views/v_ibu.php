@@ -20,7 +20,7 @@
                                 <?php
                                 foreach ($posyandu_data as $posyandu) {
                                 ?>
-                                    <a href="ibu/<?= $posyandu->id ?>" class="btn btn-info"><?= $posyandu->nama ?></a>
+                                    <a href="<?php echo base_url("ibu/posyandu/$posyandu->id"); ?>" class="btn btn-info"><?= $posyandu->nama ?></a>
                                 <?php
                                 }
                                 ?>
@@ -119,15 +119,25 @@
                         <label>Telepon</label>
                         <input type="number" class="form-control" name="telepon" placeholder="Telepon">
                     </div>
-                    <div class="form-group">
-                        <label>Posyandu</label>
-                        <select name="posyandu_id" class="form-control" required>
-                            <option value="">-- Pilih Posyandu --</option>
-                            <?php foreach ($posyandu_data as $posyandu) : ?>
-                                <option value="<?= $posyandu->id; ?>"><?= $posyandu->nama; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+                    <?php
+                    if ($this->session->userdata('level') != 'kader') {
+                    ?>
+                        <div class="form-group">
+                            <label>Posyandu</label>
+                            <select name="posyandu_id" class="form-control" required>
+                                <option value="">-- Pilih Posyandu --</option>
+                                <?php foreach ($posyandu_data as $posyandu) : ?>
+                                    <option value="<?= $posyandu->id; ?>"><?= $posyandu->nama; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    <?php
+                    } else {
+                    ?>
+                        <input type="hidden" name="posyandu_id" class="posyandu_id" value="<?= $this->session->userdata('posyandu_id') ?>">
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -179,15 +189,25 @@
                         <label>Telepon</label>
                         <input type="number" class="form-control telepon" name="telepon" placeholder="Telepon">
                     </div>
-                    <div class="form-group">
-                        <label>Posyandu</label>
-                        <select name="posyandu_id" class="form-control posyandu_id" required>
-                            <option value="">-- Pilih Posyandu --</option>
-                            <?php foreach ($posyandu_data as $posyandu) : ?>
-                                <option value="<?= $posyandu->id; ?>"><?= $posyandu->nama; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+                    <?php
+                    if ($this->session->userdata('level') != 'kader') {
+                    ?>
+                        <div class="form-group">
+                            <label>Posyandu</label>
+                            <select name="posyandu_id" class="form-control posyandu_id" required>
+                                <option value="">-- Pilih Posyandu --</option>
+                                <?php foreach ($posyandu_data as $posyandu) : ?>
+                                    <option value="<?= $posyandu->id; ?>"><?= $posyandu->nama; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    <?php
+                    } else {
+                    ?>
+                        <input type="hidden" name="posyandu_id" class="posyandu_id" value="<?= $this->session->userdata('posyandu_id') ?>">
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id" class="id">
@@ -279,8 +299,8 @@
 </form>
 <!-- End Modal Delete Product-->
 
-<script src="templates/plugins/jquery/jquery.min.js"></script>
-<script src="templates/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url('templates/plugins/jquery/jquery.min.js'); ?>"></script>
+<script src="<?php echo base_url('templates/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 <script>
     $(document).ready(function() {
         $('#datatables').DataTable();

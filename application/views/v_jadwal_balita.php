@@ -45,7 +45,7 @@
                                                         <a href="#" class="btn btn-primary btn-view" data-id="<?= $jadwal_balita->id; ?>" data-jadwal="<?= $jadwal_balita->jadwal; ?>" data-kegiatan_nama="<?= $jadwal_balita->kegiatan_nama; ?>" data-imunisasi_balita_nama="<?= $jadwal_balita->imunisasi_balita_nama; ?>" data-penyuluhan_balita_nama="<?= $jadwal_balita->penyuluhan_balita_nama; ?>" data-posyandu_nama="<?= $jadwal_balita->posyandu_nama; ?>"><i class="fa fa-eye"></i></a>
                                                         <a href="#" class="btn btn-info btn-edit" data-id="<?= $jadwal_balita->id; ?>" data-jadwal="<?= $jadwal_balita->jadwal; ?>" data-kegiatan_id="<?= $jadwal_balita->kegiatan_id; ?>" data-imunisasi_balita_id="<?= $jadwal_balita->imunisasi_balita_id; ?>" data-penyuluhan_balita_id="<?= $jadwal_balita->penyuluhan_balita_id; ?>" data-posyandu_id="<?= $jadwal_balita->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
                                                         <a href="#" class="btn btn-danger btn-delete" data-id="<?= $jadwal_balita->id; ?>"><i class="fa fa-trash"></i></a>
-                                                        <?php if ($jadwal_ibu->status == 0) { ?>
+                                                        <?php if ($jadwal_balita->status == 0) { ?>
                                                             <a href="#" class="btn btn-secondary"><i class="fa fa-paper-plane"></i></a>
                                                         <?php } ?>
                                                     </td>
@@ -263,8 +263,8 @@
 </form>
 <!-- End Modal Delete Product-->
 
-<script src="templates/plugins/jquery/jquery.min.js"></script>
-<script src="templates/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url('templates/plugins/jquery/jquery.min.js'); ?>"></script>
+<script src="<?php echo base_url('templates/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 <script>
     $(document).ready(function() {
         $('#datatables').DataTable();
@@ -308,3 +308,5 @@
 
     });
 </script>
+
+<!-- EAAYIhixngCoBABXSQ4gIZCdhfK6shZA5TNHpp6e2LtrgmJxZCmZAAPZBc97eKh5dSFrKkUe9WZAWILd1LWZAOXseFQrFIEI7CQZCSR1bCEZBjZALSIdsMeFQguwZBq8ZCwd9M6kxsw9Q5Ja0DH73siljy4NtgqYTNeSWoTAkRio3mIvSXU5j5nsNWBzH -->

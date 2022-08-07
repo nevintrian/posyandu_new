@@ -13,9 +13,18 @@ class Dashboard extends CI_Controller
     }
     public function index()
     {
+
+        if ($this->session->userdata('level') == 'kader') {
+            $balita = $this->m_balita->total_rows_kader();
+            $ibu = $this->m_ibu->total_rows_kader();
+        } else {
+            $balita = $this->m_balita->total_rows();
+            $ibu = $this->m_ibu->total_rows();
+        }
+
         $data = array(
-            'balita' => $this->m_balita->total_rows(),
-            'ibu' => $this->m_ibu->total_rows(),
+            'balita' => $balita,
+            'ibu' => $ibu
         );
 
         $this->load->view('partials/v_sidebar');

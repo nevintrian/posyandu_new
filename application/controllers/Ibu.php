@@ -17,8 +17,30 @@ class Ibu extends CI_Controller
     {
         $this->load->view('partials/v_sidebar');
         $config['total_rows'] = $this->m_ibu->total_rows();
-        $ibu = $this->m_ibu->get_limit_data();
+        if ($this->session->userdata('level') == 'kader') {
+            $ibu = $this->m_ibu->get_limit_data_kader();
+        } else {
+            $ibu = $this->m_ibu->get_limit_data();
+        }
         $this->pagination->initialize($config);
+        $posyandu = $this->m_posyandu->get_limit_data_asc();
+        $data = array(
+            'ibu_data' => $ibu,
+            'total_rows' => $config['total_rows'],
+            'posyandu_data' => $posyandu
+        );
+
+        $this->load->view('v_ibu', $data);
+        $this->load->view('partials/v_footer');
+    }
+
+    public function posyandu($id)
+    {
+        $this->load->view('partials/v_sidebar');
+
+        $config['total_rows'] = $this->m_ibu->total_rows();
+        $this->pagination->initialize($config);
+        $ibu = $this->m_ibu->get_limit_data_posyandu($id);
         $posyandu = $this->m_posyandu->get_limit_data_asc();
         $data = array(
             'ibu_data' => $ibu,

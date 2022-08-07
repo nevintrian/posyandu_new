@@ -20,7 +20,7 @@
                                 <?php
                                 foreach ($posyandu_data as $posyandu) {
                                 ?>
-                                    <a href="kader/<?= $posyandu->id ?>" class="btn btn-info"><?= $posyandu->nama ?></a>
+                                    <a href="<?php echo base_url("kader/posyandu/$posyandu->id"); ?>" class="btn btn-info"><?= $posyandu->nama ?></a>
                                 <?php
                                 }
                                 ?>
@@ -250,8 +250,8 @@
 </form>
 <!-- End Modal Delete Product-->
 
-<script src="templates/plugins/jquery/jquery.min.js"></script>
-<script src="templates/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url('templates/plugins/jquery/jquery.min.js'); ?>"></script>
+<script src="<?php echo base_url('templates/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 <script>
     $(document).ready(function() {
         $('#datatables').DataTable();

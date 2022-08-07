@@ -18,8 +18,30 @@ class Balita extends CI_Controller
         $this->load->view('partials/v_sidebar');
 
         $config['total_rows'] = $this->m_balita->total_rows();
-        $balita = $this->m_balita->get_limit_data();
         $this->pagination->initialize($config);
+        if ($this->session->userdata('level') == 'kader') {
+            $balita = $this->m_balita->get_limit_data_kader();
+        } else {
+            $balita = $this->m_balita->get_limit_data();
+        }
+        $posyandu = $this->m_posyandu->get_limit_data_asc();
+        $data = array(
+            'balita_data' => $balita,
+            'total_rows' => $config['total_rows'],
+            'posyandu_data' => $posyandu
+        );
+
+        $this->load->view('v_balita', $data);
+        $this->load->view('partials/v_footer');
+    }
+
+    public function posyandu($id)
+    {
+        $this->load->view('partials/v_sidebar');
+
+        $config['total_rows'] = $this->m_balita->total_rows();
+        $this->pagination->initialize($config);
+        $balita = $this->m_balita->get_limit_data_posyandu($id);
         $posyandu = $this->m_posyandu->get_limit_data_asc();
         $data = array(
             'balita_data' => $balita,

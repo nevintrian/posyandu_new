@@ -21,7 +21,7 @@ class M_ibu extends CI_Model
 
     function get_limit_data()
     {
-        $this->db->select('ibu.* , posyandu.nama as posyandu_nama');
+        $this->db->select('ibu.* , posyandu.nama as posyandu_nama, posyandu.alamat as posyandu_alamat');
         $this->db->join('posyandu', 'ibu.posyandu_id = posyandu.id');
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
@@ -29,7 +29,7 @@ class M_ibu extends CI_Model
 
     function get_limit_data_kader()
     {
-        $this->db->select('ibu.* , posyandu.nama as posyandu_nama');
+        $this->db->select('ibu.* , posyandu.nama as posyandu_nama, posyandu.alamat as posyandu_alamat');
         $this->db->join('posyandu', 'ibu.posyandu_id = posyandu.id');
         $this->db->where('posyandu.id',  $this->session->userdata('posyandu_id'));
         $this->db->order_by($this->id, $this->order);
@@ -38,7 +38,7 @@ class M_ibu extends CI_Model
 
     function get_limit_data_posyandu($id)
     {
-        $this->db->select('ibu.* , posyandu.nama as posyandu_nama');
+        $this->db->select('ibu.* , posyandu.nama as posyandu_nama, posyandu.alamat as posyandu_alamat');
         $this->db->join('posyandu', 'ibu.posyandu_id = posyandu.id');
         $this->db->where('posyandu.id',  $id);
         $this->db->order_by($this->id, $this->order);

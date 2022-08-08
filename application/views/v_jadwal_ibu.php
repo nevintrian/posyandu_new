@@ -46,7 +46,17 @@
                                                         <a href="#" class="btn btn-info btn-edit" data-id="<?= $jadwal_ibu->id; ?>" data-jadwal="<?= $jadwal_ibu->jadwal; ?>" data-kegiatan_id="<?= $jadwal_ibu->kegiatan_id; ?>" data-imunisasi_ibu_id="<?= $jadwal_ibu->imunisasi_ibu_id; ?>" data-penyuluhan_ibu_id="<?= $jadwal_ibu->penyuluhan_ibu_id; ?>" data-posyandu_id="<?= $jadwal_ibu->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
                                                         <a href="#" class="btn btn-danger btn-delete" data-id="<?= $jadwal_ibu->id; ?>"><i class="fa fa-trash"></i></a>
                                                         <?php if ($jadwal_ibu->status == 0) { ?>
-                                                            <a href="#" class="btn btn-secondary"><i class="fa fa-paper-plane"></i></a>
+                                                            <form method="post" class="d-inline" action="<?php echo base_url("jadwal_ibu/send_whatsapp"); ?>">
+                                                                <input type="hidden" name="id" class="id" value="<?= $jadwal_ibu->id ?>">
+                                                                <input type="hidden" name="jadwal" class="jadwal" value="<?= $jadwal_ibu->jadwal ?>">
+                                                                <input type="hidden" name="kegiatan_nama" class="kegiatan_nama" value="<?= $jadwal_ibu->kegiatan_nama ?>">
+                                                                <input type="hidden" name="imunisasi_ibu_nama" class="imunisasi_ibu_nama" value="<?= $jadwal_ibu->imunisasi_ibu_nama ?>">
+                                                                <input type="hidden" name="penyuluhan_ibu_nama" class="penyuluhan_ibu_nama" value="<?= $jadwal_ibu->penyuluhan_ibu_nama ?>">
+                                                                <input type="hidden" name="posyandu_nama" class="posyandu_nama" value="<?= $jadwal_ibu->posyandu_nama ?>">
+                                                                <input type="hidden" name="posyandu_alamat" class="posyandu_alamat" value="<?= $jadwal_ibu->posyandu_alamat ?>">
+                                                                <input type="hidden" name="posyandu_id" class="posyandu_id" value="<?= $jadwal_ibu->posyandu_id ?>">
+                                                                <button class="btn btn-secondary d-inline" type="submit"><i class="fa fa-paper-plane"></i></button>
+                                                            </form>
                                                         <?php } ?>
                                                     </td>
                                                 </tr>
@@ -83,7 +93,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Jadwal</label>
-                        <input type="date" class="form-control jadwal" name="jadwal" placeholder="Jadwal" required>
+                        <input type="datetime-local" class="form-control jadwal" name="jadwal" placeholder="Jadwal" required>
                     </div>
                     <div class="form-group">
                         <label>Kegiatan</label>
@@ -146,7 +156,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Jadwal</label>
-                        <input type="date" class="form-control jadwal" name="jadwal" placeholder="Jadwal">
+                        <input type="datetime-local" class="form-control jadwal" name="jadwal" placeholder="Jadwal">
                     </div>
                     <div class="form-group">
                         <label>Kegiatan</label>
@@ -210,7 +220,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Jadwal</label>
-                        <input type="date" class="form-control jadwal" name="jadwal" placeholder="Jadwal" disabled>
+                        <input type="datetime-local" class="form-control jadwal" name="jadwal" placeholder="Jadwal" disabled>
                     </div>
                     <div class="form-group">
                         <label>Kegiatan</label>

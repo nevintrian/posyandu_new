@@ -15,7 +15,7 @@ class M_jadwal_balita extends CI_Model
     function get_limit_data()
     {
         $this->db->order_by($this->id, $this->order);
-        $this->db->select('jadwal_balita.* , kegiatan.nama as kegiatan_nama, imunisasi_balita.nama as imunisasi_balita_nama, penyuluhan_balita.nama as penyuluhan_balita_nama, posyandu.nama as posyandu_nama');
+        $this->db->select('jadwal_balita.* , kegiatan.nama as kegiatan_nama, imunisasi_balita.nama as imunisasi_balita_nama, penyuluhan_balita.nama as penyuluhan_balita_nama, posyandu.nama as posyandu_nama, posyandu.alamat as posyandu_alamat');
         $this->db->join('kegiatan', 'jadwal_balita.kegiatan_id = kegiatan.id');
         $this->db->join('imunisasi_balita', 'jadwal_balita.imunisasi_balita_id = imunisasi_balita.id');
         $this->db->join('penyuluhan_balita', 'jadwal_balita.penyuluhan_balita_id = penyuluhan_balita.id');

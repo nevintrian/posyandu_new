@@ -83,7 +83,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Jadwal</label>
-                        <input type="date" class="form-control jadwal" name="jadwal" placeholder="Jadwal" required>
+                        <input type="datetime-local" class="form-control jadwal" name="jadwal" placeholder="Jadwal" required>
                     </div>
                     <div class="form-group">
                         <label>Kegiatan</label>
@@ -146,7 +146,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Jadwal</label>
-                        <input type="date" class="form-control jadwal" name="jadwal" placeholder="Jadwal">
+                        <input type="datetime-local" class="form-control jadwal" name="jadwal" placeholder="Jadwal">
                     </div>
                     <div class="form-group">
                         <label>Kegiatan</label>
@@ -210,7 +210,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Jadwal</label>
-                        <input type="date" class="form-control jadwal" name="jadwal" placeholder="Jadwal" disabled>
+                        <input type="datetime-local" class="form-control jadwal" name="jadwal" placeholder="Jadwal" disabled>
                     </div>
                     <div class="form-group">
                         <label>Kegiatan</label>
@@ -308,5 +308,3 @@
 
     });
 </script>
-
-<!-- EAAYIhixngCoBABXSQ4gIZCdhfK6shZA5TNHpp6e2LtrgmJxZCmZAAPZBc97eKh5dSFrKkUe9WZAWILd1LWZAOXseFQrFIEI7CQZCSR1bCEZBjZALSIdsMeFQguwZBq8ZCwd9M6kxsw9Q5Ja0DH73siljy4NtgqYTNeSWoTAkRio3mIvSXU5j5nsNWBzH -->

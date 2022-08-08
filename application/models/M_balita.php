@@ -22,14 +22,14 @@ class M_balita extends CI_Model
     function get_limit_data()
     {
         $this->db->order_by($this->id, $this->order);
-        $this->db->select('balita.* , posyandu.nama as posyandu_nama');
+        $this->db->select('balita.* , posyandu.nama as posyandu_nama, posyandu.alamat as posyandu_alamat');
         $this->db->join('posyandu', 'balita.posyandu_id = posyandu.id');
         return $this->db->get($this->table)->result();
     }
 
     function get_limit_data_kader()
     {
-        $this->db->select('balita.* , posyandu.nama as posyandu_nama');
+        $this->db->select('balita.* , posyandu.nama as posyandu_nama, posyandu.alamat as posyandu_alamat');
         $this->db->join('posyandu', 'balita.posyandu_id = posyandu.id');
         $this->db->where('posyandu.id',  $this->session->userdata('posyandu_id'));
         $this->db->order_by($this->id, $this->order);
@@ -38,7 +38,7 @@ class M_balita extends CI_Model
 
     function get_limit_data_posyandu($id)
     {
-        $this->db->select('balita.* , posyandu.nama as posyandu_nama');
+        $this->db->select('balita.* , posyandu.nama as posyandu_nama, posyandu.alamat as posyandu_alamat');
         $this->db->join('posyandu', 'balita.posyandu_id = posyandu.id');
         $this->db->where('posyandu.id',  $id);
         $this->db->order_by($this->id, $this->order);

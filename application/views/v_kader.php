@@ -17,6 +17,7 @@
                         </div>
                         <?php if ($this->session->userdata('level') == 'admin' || $this->session->userdata('level') == 'bidan') { ?>
                             <div class="card-header posyandu-header">
+                                <a href="<?php echo base_url("kader"); ?>" class="btn btn-info">All</a>
                                 <?php
                                 foreach ($posyandu_data as $posyandu) {
                                 ?>
@@ -79,7 +80,7 @@
 
 
 <!-- Modal Add Product-->
-<form action="kader/save" method="post">
+<form action="<?php echo base_url("kader/save"); ?>" method="post">
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -131,7 +132,7 @@
 <!-- End Modal Add Product-->
 
 <!-- Modal Edit Product-->
-<form action="kader/update" method="post">
+<form action="<?php echo base_url("kader/update"); ?>" method="post">
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -226,7 +227,7 @@
 <!-- End Modal View Product-->
 
 <!-- Modal Delete Product-->
-<form action="kader/delete" method="post">
+<form action="<?php echo base_url("kader/delete"); ?>" method="post">
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

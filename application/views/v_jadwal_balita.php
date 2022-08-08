@@ -70,7 +70,7 @@
 
 
 <!-- Modal Add Product-->
-<form action="jadwal_balita/save" method="post">
+<form action="<?php echo base_url("jadwal_balita/save"); ?>" method="post">
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -133,7 +133,7 @@
 <!-- End Modal Add Product-->
 
 <!-- Modal Edit Product-->
-<form action="jadwal_balita/update" method="post">
+<form action="<?php echo base_url("jadwal_balita/update"); ?>" method="post">
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -239,7 +239,7 @@
 <!-- End Modal View Product-->
 
 <!-- Modal Delete Product-->
-<form action="jadwal_balita/delete" method="post">
+<form action="<?php echo base_url("jadwal_balita/delete"); ?>" method="post">
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

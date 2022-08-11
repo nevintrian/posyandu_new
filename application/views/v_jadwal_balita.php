@@ -46,7 +46,17 @@
                                                         <a href="#" class="btn btn-info btn-edit" data-id="<?= $jadwal_balita->id; ?>" data-jadwal="<?= $jadwal_balita->jadwal; ?>" data-kegiatan_id="<?= $jadwal_balita->kegiatan_id; ?>" data-imunisasi_balita_id="<?= $jadwal_balita->imunisasi_balita_id; ?>" data-penyuluhan_balita_id="<?= $jadwal_balita->penyuluhan_balita_id; ?>" data-posyandu_id="<?= $jadwal_balita->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
                                                         <a href="#" class="btn btn-danger btn-delete" data-id="<?= $jadwal_balita->id; ?>"><i class="fa fa-trash"></i></a>
                                                         <?php if ($jadwal_balita->status == 0) { ?>
-                                                            <a href="#" class="btn btn-secondary"><i class="fa fa-paper-plane"></i></a>
+                                                            <form method="post" class="d-inline" action="<?php echo base_url("jadwal_balita/send_whatsapp"); ?>">
+                                                                <input type="hidden" name="id" class="id" value="<?= $jadwal_balita->id ?>">
+                                                                <input type="hidden" name="jadwal" class="jadwal" value="<?= $jadwal_balita->jadwal ?>">
+                                                                <input type="hidden" name="kegiatan_nama" class="kegiatan_nama" value="<?= $jadwal_balita->kegiatan_nama ?>">
+                                                                <input type="hidden" name="imunisasi_balita_nama" class="imunisasi_balita_nama" value="<?= $jadwal_balita->imunisasi_balita_nama ?>">
+                                                                <input type="hidden" name="penyuluhan_balita_nama" class="penyuluhan_balita_nama" value="<?= $jadwal_balita->penyuluhan_balita_nama ?>">
+                                                                <input type="hidden" name="posyandu_nama" class="posyandu_nama" value="<?= $jadwal_balita->posyandu_nama ?>">
+                                                                <input type="hidden" name="posyandu_alamat" class="posyandu_alamat" value="<?= $jadwal_balita->posyandu_alamat ?>">
+                                                                <input type="hidden" name="posyandu_id" class="posyandu_id" value="<?= $jadwal_balita->posyandu_id ?>">
+                                                                <button class="btn btn-secondary d-inline" type="submit"><i class="fa fa-paper-plane"></i></button>
+                                                            </form>
                                                         <?php } ?>
                                                     </td>
                                                 </tr>

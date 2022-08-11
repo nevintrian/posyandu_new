@@ -12,9 +12,11 @@ class Jadwal_ibu extends CI_Controller
         $this->load->model('m_penyuluhan_ibu');
         $this->load->model('m_imunisasi_ibu');
         $this->load->model('m_posyandu');
+        $this->load->model('m_pesan');
         $this->load->model('m_ibu');
         $this->load->library('pagination');
         $this->load->library('upload');
+        $this->load->helper('tgl_indo');
     }
 
 
@@ -74,25 +76,7 @@ class Jadwal_ibu extends CI_Controller
         redirect(site_url('jadwal_ibu'));
     }
 
-    public function send()
-    {
-        //send message
 
-
-        $data = array(
-            'status' => 1,
-        );
-
-        $this->m_jadwal_balita->update($this->input->post('id'), $data);
-
-
-        $data1 = array(
-            'waktu' => date("Y-m-d H:i:s"),
-            'posyandu_id' => $this->input->post('posyandu_id'),
-            'status' => $this->input->post('status'),
-        );
-        $this->m_pesan->insert($data1);
-    }
 
     public function convert_telepon($nohp)
     {
@@ -122,11 +106,18 @@ class Jadwal_ibu extends CI_Controller
         $posyandu_id = $this->input->post('posyandu_id');
         $ibu_data = $this->m_ibu->get_limit_data_posyandu($posyandu_id);
 
+        $date = new DateTime($jadwal);
+
+        $day = longdate_indo($date->format('d-m-Y'));
+        $str_arr = explode(",", $day);
+        $new_day = $str_arr[0];
+        $new_date = $date->format('d-m-Y');
+        $new_time = $date->format('H:i');
+
         foreach ($ibu_data as $ibu) {
             $telepon = $this->convert_telepon($ibu->telepon);
 
-
-            $url = "https://graph.facebook.com/v13.0/106096408864584/messages";
+            $url = "https://graph.facebook.com/v13.0/110056228476958/messages";
 
             $curl = curl_init($url);
             curl_setopt($curl, CURLOPT_URL, $url);
@@ -135,7 +126,7 @@ class Jadwal_ibu extends CI_Controller
 
             $headers = array(
                 "Accept: application/json",
-                "Authorization: Bearer EAAYIhixngCoBAK6mEolZB7T4G5JrgDN2X6yeeKuldycOliY6uWwZBZAJCNzZBoRJOvLFG09EDtqZBDNxKO1R3NwHdlaI05Lvap6tWKLR5GjvDzXmdkErnL0OHMxuTXQqVZB4eExLEZCa2hRB1jruuTtLXXVxlUhGd4HQJdHFl1xVqQBtU19TCVlRESlnQbBGXhloKZBdvkrVjnXYPCpTTzBB",
+                "Authorization: Bearer EAAYIhixngCoBAPS9BKkHXZBxu2hQVtmZBnUTVZCZBNlEchTS3zt3X9yDot7W10p7B8gdpkLJrQGxWJ5UruXsPGKdjwSMk6Tc6xQIzrXy4W5n0GhCwfXZAbxAiOrmvC7ByGyuZBsxGL8XlYnU2ZCheK2lwWTIugrZCaWQBF3vaRaF1vLqelDW9F1I",
                 "Content-Type: application/json",
             );
             curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
@@ -145,14 +136,22 @@ class Jadwal_ibu extends CI_Controller
                 "messaging_product": "whatsapp", 
                 "to": "$telepon", 
                 "type": "template", 
-                "template": { "name": "posyandu", 
+                "template": { "name": "sipadu", 
                 "language": { "code": "id" },
                 "components": [{
                     "type" : "body",
                     "parameters": [
                         {
                             "type": "text",
-                            "text": "$jadwal"
+                            "text": "$new_day"
+                        },
+                        {
+                            "type": "text",
+                            "text": "$new_date"
+                        },
+                        {
+                            "type": "text",
+                            "text": "$new_time"
                         },
                         {
                             "type": "text",
@@ -190,75 +189,24 @@ class Jadwal_ibu extends CI_Controller
             var_dump($resp);
         }
 
+        $this->updateDB();
         redirect(site_url('jadwal_ibu'));
     }
 
-    function send_whatsapp_1()
+    public function updateDB()
     {
-
-        $url = "https://graph.facebook.com/v13.0/106096408864584/messages";
-
-        $curl = curl_init($url);
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-        $headers = array(
-            "Accept: application/json",
-            "Authorization: Bearer EAAYIhixngCoBAK6mEolZB7T4G5JrgDN2X6yeeKuldycOliY6uWwZBZAJCNzZBoRJOvLFG09EDtqZBDNxKO1R3NwHdlaI05Lvap6tWKLR5GjvDzXmdkErnL0OHMxuTXQqVZB4eExLEZCa2hRB1jruuTtLXXVxlUhGd4HQJdHFl1xVqQBtU19TCVlRESlnQbBGXhloKZBdvkrVjnXYPCpTTzBB",
-            "Content-Type: application/json",
+        $data = array(
+            'status' => 1,
         );
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
-        $data = <<<DATA
-        { 
-            "messaging_product": "whatsapp", 
-            "to": "6282234706515", 
-            "type": "template", 
-            "template": { "name": "posyandu", 
-            "language": { "code": "id" },
-            "components": [{
-                "type" : "body",
-                "parameters": [
-                    {
-                        "type": "text",
-                        "text": "2020-02-02"
-                    },
-                    {
-                        "type": "text",
-                        "text": "imunisasi"
-                    },
-                    {
-                        "type": "text",
-                        "text": "campak"
-                    },
-                    {
-                        "type": "text",
-                        "text": "tidak ada"
-                    },
-                    {
-                        "type": "text",
-                        "text": "posyandu 3"
-                    },
-                    {
-                        "type": "text",
-                        "text": "Jalan Desa Pemerintah"
-                    }
-                ]}
-            ]}
-        }
-        DATA;
+        $this->m_jadwal_ibu->update($this->input->post('id'), $data);
 
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
-        //for debug only!
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-        $resp = curl_exec($curl);
-        curl_close($curl);
-        var_dump($resp);
-
-        redirect(site_url('jadwal_ibu'));
+        $data1 = array(
+            'waktu' => date("Y-m-d H:i:s"),
+            'posyandu_id' => $this->input->post('posyandu_id'),
+            'status' => 'Berhasil',
+        );
+        $this->m_pesan->insert($data1);
     }
 }

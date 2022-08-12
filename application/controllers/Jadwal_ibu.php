@@ -126,7 +126,7 @@ class Jadwal_ibu extends CI_Controller
 
             $headers = array(
                 "Accept: application/json",
-                "Authorization: Bearer EAAYIhixngCoBAPS9BKkHXZBxu2hQVtmZBnUTVZCZBNlEchTS3zt3X9yDot7W10p7B8gdpkLJrQGxWJ5UruXsPGKdjwSMk6Tc6xQIzrXy4W5n0GhCwfXZAbxAiOrmvC7ByGyuZBsxGL8XlYnU2ZCheK2lwWTIugrZCaWQBF3vaRaF1vLqelDW9F1I",
+                "Authorization: Bearer EAAYIhixngCoBALihDjgo2dun7fv1O0mXUlb0SdCdNmWcL8o8irsMK7dE4a3cobZAfmG1wCto3FzjAyE8ZAqHR2pA2x8492wR2t8uhN5AX86ZBd3EvBcxouzDWRJ04l5sf4WyWVFZCnd9u9k8T1hEIlobifY8Q5ZC6wF6DfQp3BfZCV3jb2GQ3P",
                 "Content-Type: application/json",
             );
             curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);

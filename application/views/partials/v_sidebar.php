@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Fixed Sidebar</title>
+  <title>SIPADU DASHBOARD</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="<?php echo base_url('templates/plugins/fontawesome-free/css/all.min.css'); ?>">
@@ -58,7 +58,7 @@
       <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="<?php echo base_url('templates/dist/img/user2-160x160.jpg'); ?>" class="img-circle elevation-2" alt="User Image">
+            <img src="<?php echo base_url('templates/dist/img/user.png'); ?>" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block"><?= $this->session->userdata('nama') ?></a>
@@ -162,7 +162,7 @@
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-tree"></i>
+                  <i class="nav-icon fas fa-paper-plane"></i>
                   <p>
                     Transaksi
                     <i class="fas fa-angle-left right"></i>

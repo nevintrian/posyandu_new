@@ -4,12 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Log in</title>
+    <title>SIPADU</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="templates/plugins/fontawesome-free/css/all.min.css">
+    
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="templates/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
@@ -19,12 +20,18 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Login </b>Posyandu</a>
+            <b>Login </b>SIPADU
+            <div class="row justify-content-center">
+            <div class="image">
+                <img src="<?php echo base_url('templates/dist/img/bidan.png'); ?>" class="w-75" alt="User Image">
+            </div>
         </div>
+        </div>
+        
         <!-- /.login-logo -->
         <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+            <div class="card-body login-card-body rounded shadow-lg">
+                <p class="login-box-msg">Sistem Informasi Posyandu</p>
 
                 <form action="<?php echo base_url("login"); ?>" method="post">
                     <div class="input-group mb-3">
@@ -43,29 +50,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
+                    <div class="row justify-content-center">
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button style="background-color: #72BDB6; border-color: white;" type="submit" class="btn btn-primary btn-block">Masuk</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
-
-
-
-                <p class="mb-1">
-                    <a href="forgot-password.html">I forgot my password</a>
-                </p>
-
             </div>
             <!-- /.login-card-body -->
         </div>

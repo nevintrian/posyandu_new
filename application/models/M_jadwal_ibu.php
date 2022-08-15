@@ -23,6 +23,18 @@ class M_jadwal_ibu extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    function get_limit_data_posyandu($id)
+    {
+        $this->db->select('jadwal_ibu.* , kegiatan.nama as kegiatan_nama, imunisasi_ibu.nama as imunisasi_ibu_nama, penyuluhan_ibu.nama as penyuluhan_ibu_nama, posyandu.nama as posyandu_nama, posyandu.alamat as posyandu_alamat');
+        $this->db->join('kegiatan', 'jadwal_ibu.kegiatan_id = kegiatan.id');
+        $this->db->join('imunisasi_ibu', 'jadwal_ibu.imunisasi_ibu_id = imunisasi_ibu.id');
+        $this->db->join('penyuluhan_ibu', 'jadwal_ibu.penyuluhan_ibu_id = penyuluhan_ibu.id');
+        $this->db->join('posyandu', 'jadwal_ibu.posyandu_id = posyandu.id');
+        $this->db->where('posyandu.id',  $id);
+        $this->db->order_by($this->id, $this->order);
+        return $this->db->get($this->table)->result();
+    }
+
     function insert($data)
     {
         $this->db->insert($this->table, $data);

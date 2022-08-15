@@ -17,6 +17,7 @@ class Jadwal_balita extends CI_Controller
         $this->load->library('pagination');
         $this->load->library('upload');
         $this->load->helper('tgl_indo');
+        $this->load->library('cetak_pdf');
     }
 
 
@@ -28,9 +29,31 @@ class Jadwal_balita extends CI_Controller
         $kegiatan = $this->m_kegiatan->get_limit_data();
         $imunisasi_balita = $this->m_imunisasi_balita->get_limit_data();
         $penyuluhan_balita = $this->m_penyuluhan_balita->get_limit_data();
-        $posyandu = $this->m_posyandu->get_limit_data();
+        $posyandu = $this->m_posyandu->get_limit_data_asc();
 
         $this->pagination->initialize($config);
+        $data = array(
+            'jadwal_balita_data' => $jadwal_balita,
+            'kegiatan_data' => $kegiatan,
+            'imunisasi_balita_data' => $imunisasi_balita,
+            'penyuluhan_balita_data' => $penyuluhan_balita,
+            'posyandu_data' => $posyandu,
+            'total_rows' => $config['total_rows'],
+        );
+
+        $this->load->view('v_jadwal_balita', $data);
+        $this->load->view('partials/v_footer');
+    }
+
+    public function posyandu($id)
+    {
+        $this->load->view('partials/v_sidebar');
+        $config['total_rows'] = $this->m_jadwal_balita->total_rows();
+        $jadwal_balita = $this->m_jadwal_balita->get_limit_data_posyandu($id);
+        $kegiatan = $this->m_kegiatan->get_limit_data();
+        $imunisasi_balita = $this->m_imunisasi_balita->get_limit_data();
+        $penyuluhan_balita = $this->m_penyuluhan_balita->get_limit_data();
+        $posyandu = $this->m_posyandu->get_limit_data_asc();
         $data = array(
             'jadwal_balita_data' => $jadwal_balita,
             'kegiatan_data' => $kegiatan,
@@ -207,5 +230,43 @@ class Jadwal_balita extends CI_Controller
             'status' => 'Berhasil',
         );
         $this->m_pesan->insert($data1);
+    }
+
+    public function cetak_pdf($id)
+    {
+        $pdf = new FPDF('P', 'mm', array(265, 345));
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+        if (is_numeric($id)) {
+            $pdf->Cell(0, 7, "DATA JADWAL BALITA POSYANDU $id", 0, 1, 'C');
+        } else {
+            $pdf->Cell(0, 7, "DATA JADWAL BALITA SEMUA POSYANDU", 0, 1, 'C');
+        }
+        $pdf->Cell(10, 7, '', 0, 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(8, 6, 'No', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Jadwal Kegiatan', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Nama Kegiatan', 1, 0, 'C');
+        $pdf->Cell(50, 6, 'Nama Imunisasi', 1, 0, 'C');
+        $pdf->Cell(50, 6, 'Nama Penyuluhan', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Nama Posyandu', 1, 1, 'C');
+        $pdf->SetFont('Arial', '', 10);
+        if (is_numeric($id)) {
+            $barang = $this->db->query("SELECT jadwal_balita.*, kegiatan.nama as kegiatan_nama, penyuluhan_balita.nama as penyuluhan_balita_nama, imunisasi_balita.nama as imunisasi_balita_nama, posyandu.nama as posyandu_nama FROM jadwal_balita join kegiatan on kegiatan.id = jadwal_balita.kegiatan_id join penyuluhan_balita on penyuluhan_balita.id = jadwal_balita.penyuluhan_balita_id join imunisasi_balita on imunisasi_balita.id = jadwal_balita.imunisasi_balita_id join posyandu on jadwal_balita.posyandu_id = posyandu.id where posyandu.id = $id")->result();
+        } else {
+            $barang = $this->db->query("SELECT jadwal_balita.*, kegiatan.nama as kegiatan_nama, penyuluhan_balita.nama as penyuluhan_balita_nama, imunisasi_balita.nama as imunisasi_balita_nama, posyandu.nama as posyandu_nama FROM jadwal_balita join kegiatan on kegiatan.id = jadwal_balita.kegiatan_id join penyuluhan_balita on penyuluhan_balita.id = jadwal_balita.penyuluhan_balita_id join imunisasi_balita on imunisasi_balita.id = jadwal_balita.imunisasi_balita_id join posyandu on jadwal_balita.posyandu_id = posyandu.id")->result();
+        }
+        $no = 1;
+        foreach ($barang as $data) {
+            $pdf->Cell(8, 6, $no, 1, 0);
+            $pdf->Cell(45, 6, $data->jadwal, 1, 0);
+            $pdf->Cell(45, 6, $data->kegiatan_nama, 1, 0);
+            $pdf->Cell(50, 6, $data->imunisasi_balita_nama, 1, 0);
+            $pdf->Cell(50, 6, $data->penyuluhan_balita_nama, 1, 0);
+            $pdf->Cell(45, 6, $data->posyandu_nama, 1, 1);
+            $no++;
+        }
+
+        $pdf->Output();
     }
 }

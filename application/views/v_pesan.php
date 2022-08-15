@@ -44,6 +44,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <a href="pesan/cetak_pdf" class="btn btn-info">Cetak Data Pesan</a>
                         </div>
                     </div>
                 </div>

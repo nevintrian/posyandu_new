@@ -12,8 +12,15 @@
                         <div class="card-header">
                             <h3 class="card-title">Data Jadwal Balita</h3>
                         </div>
-                        <div class="card-header">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Tambah</button>
+                        <div class="card-header posyandu-header">
+                            <a href="<?php echo base_url("jadwal_balita"); ?>" class="btn btn-info">All</a>
+                            <?php
+                            foreach ($posyandu_data as $posyandu) {
+                            ?>
+                                <a href="<?php echo base_url("jadwal_balita/posyandu/$posyandu->id"); ?>" class="btn btn-info"><?= $posyandu->nama ?></a>
+                            <?php
+                            }
+                            ?>
                         </div>
                         <div class="card-body">
                             <div class="col-md-12">
@@ -70,6 +77,10 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <?php
+                            $id = basename($_SERVER['REQUEST_URI']);
+                            ?>
+                            <a href=" <?php echo base_url("jadwal_balita/cetak_pdf/$id"); ?>" class="btn btn-info">Cetak Data Jadwal Balita</a>
                         </div>
                     </div>
                 </div>

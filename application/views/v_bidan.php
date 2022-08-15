@@ -55,6 +55,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <a href="bidan/cetak_pdf" class="btn btn-info">Cetak Data Bidan</a>
                         </div>
                     </div>
                 </div>

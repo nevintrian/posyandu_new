@@ -49,6 +49,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <a href="penyuluhan_balita/cetak_pdf" class="btn btn-info">Cetak Data Penyuluhan Balita</a>
                         </div>
                     </div>
                 </div>

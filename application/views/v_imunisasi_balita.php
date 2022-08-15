@@ -49,6 +49,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <a href="imunisasi_balita/cetak_pdf" class="btn btn-info">Cetak Data Imunisasi Balita</a>
                         </div>
                     </div>
                 </div>

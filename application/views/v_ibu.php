@@ -71,6 +71,10 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <?php
+                            $id = basename($_SERVER['REQUEST_URI']);
+                            ?>
+                            <a href=" <?php echo base_url("ibu/cetak_pdf/$id"); ?>" class="btn btn-info">Cetak Data Ibu Hamil</a>
                         </div>
                     </div>
                 </div>

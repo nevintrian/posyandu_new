@@ -51,6 +51,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <a href="posyandu/cetak_pdf" class="btn btn-info">Cetak Data Posyandu</a>
                         </div>
                     </div>
                 </div>

@@ -10,6 +10,7 @@ class Posyandu extends CI_Controller
         $this->load->model('m_posyandu');
         $this->load->library('pagination');
         $this->load->library('upload');
+        $this->load->library('cetak_pdf');
     }
 
     public function index()
@@ -51,5 +52,29 @@ class Posyandu extends CI_Controller
     {
         $this->m_posyandu->delete($this->input->post('id'));
         redirect(site_url('posyandu'));
+    }
+
+    public function cetak_pdf()
+    {
+        $pdf = new FPDF('P', 'mm', 'Letter');
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(0, 7, 'DATA POSYANDU', 0, 1, 'C');
+        $pdf->Cell(10, 7, '', 0, 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(8, 6, 'No', 1, 0, 'C');
+        $pdf->Cell(95, 6, 'Nama Posyandu', 1, 0, 'C');
+        $pdf->Cell(95, 6, 'Alamat', 1, 1, 'C');
+        $pdf->SetFont('Arial', '', 10);
+        $barang = $this->db->query("SELECT * FROM posyandu")->result();
+        $no = 1;
+        foreach ($barang as $data) {
+            $pdf->Cell(8, 6, $no, 1, 0);
+            $pdf->Cell(95, 6, $data->nama, 1, 0);
+            $pdf->Cell(95, 6, $data->alamat, 1, 1);
+            $no++;
+        }
+
+        $pdf->Output();
     }
 }

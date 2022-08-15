@@ -74,6 +74,10 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <?php
+                            $id = basename($_SERVER['REQUEST_URI']);
+                            ?>
+                            <a href=" <?php echo base_url("balita/cetak_pdf/$id"); ?>" class="btn btn-info">Cetak Data Balita</a>
                         </div>
                     </div>
                 </div>

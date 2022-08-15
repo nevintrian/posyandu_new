@@ -49,6 +49,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <a href="penyuluhan_ibu/cetak_pdf" class="btn btn-info">Cetak Data Penyuluhan Ibu</a>
                         </div>
                     </div>
                 </div>

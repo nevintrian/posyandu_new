@@ -17,6 +17,7 @@ class Jadwal_ibu extends CI_Controller
         $this->load->library('pagination');
         $this->load->library('upload');
         $this->load->helper('tgl_indo');
+        $this->load->library('cetak_pdf');
     }
 
 
@@ -28,8 +29,30 @@ class Jadwal_ibu extends CI_Controller
         $kegiatan = $this->m_kegiatan->get_limit_data();
         $imunisasi_ibu = $this->m_imunisasi_ibu->get_limit_data();
         $penyuluhan_ibu = $this->m_penyuluhan_ibu->get_limit_data();
-        $posyandu = $this->m_posyandu->get_limit_data();
+        $posyandu = $this->m_posyandu->get_limit_data_asc();
         $this->pagination->initialize($config);
+        $data = array(
+            'jadwal_ibu_data' => $jadwal_ibu,
+            'kegiatan_data' => $kegiatan,
+            'imunisasi_ibu_data' => $imunisasi_ibu,
+            'penyuluhan_ibu_data' => $penyuluhan_ibu,
+            'posyandu_data' => $posyandu,
+            'total_rows' => $config['total_rows'],
+        );
+
+        $this->load->view('v_jadwal_ibu', $data);
+        $this->load->view('partials/v_footer');
+    }
+
+    public function posyandu($id)
+    {
+        $this->load->view('partials/v_sidebar');
+        $config['total_rows'] = $this->m_jadwal_ibu->total_rows();
+        $jadwal_ibu = $this->m_jadwal_ibu->get_limit_data_posyandu($id);
+        $kegiatan = $this->m_kegiatan->get_limit_data();
+        $imunisasi_ibu = $this->m_imunisasi_ibu->get_limit_data();
+        $penyuluhan_ibu = $this->m_penyuluhan_ibu->get_limit_data();
+        $posyandu = $this->m_posyandu->get_limit_data_asc();
         $data = array(
             'jadwal_ibu_data' => $jadwal_ibu,
             'kegiatan_data' => $kegiatan,
@@ -186,7 +209,9 @@ class Jadwal_ibu extends CI_Controller
 
             $resp = curl_exec($curl);
             curl_close($curl);
-            var_dump($resp);
+
+            // print_r(json_decode($resp, true)['error']['message']);
+            // die();
         }
 
         $this->updateDB();
@@ -208,5 +233,43 @@ class Jadwal_ibu extends CI_Controller
             'status' => 'Berhasil',
         );
         $this->m_pesan->insert($data1);
+    }
+
+    public function cetak_pdf($id)
+    {
+        $pdf = new FPDF('P', 'mm', array(265, 345));
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+        if (is_numeric($id)) {
+            $pdf->Cell(0, 7, "DATA JADWAL IBU HAMIL POSYANDU $id", 0, 1, 'C');
+        } else {
+            $pdf->Cell(0, 7, "DATA JADWAL IBU HAMIL SEMUA POSYANDU", 0, 1, 'C');
+        }
+        $pdf->Cell(10, 7, '', 0, 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(8, 6, 'No', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Jadwal Kegiatan', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Nama Kegiatan', 1, 0, 'C');
+        $pdf->Cell(50, 6, 'Nama Imunisasi', 1, 0, 'C');
+        $pdf->Cell(50, 6, 'Nama Penyuluhan', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Nama Posyandu', 1, 1, 'C');
+        $pdf->SetFont('Arial', '', 10);
+        if (is_numeric($id)) {
+            $barang = $this->db->query("SELECT jadwal_ibu.*, kegiatan.nama as kegiatan_nama, penyuluhan_ibu.nama as penyuluhan_ibu_nama, imunisasi_ibu.nama as imunisasi_ibu_nama, posyandu.nama as posyandu_nama FROM jadwal_ibu join kegiatan on kegiatan.id = jadwal_ibu.kegiatan_id join penyuluhan_ibu on penyuluhan_ibu.id = jadwal_ibu.penyuluhan_ibu_id join imunisasi_ibu on imunisasi_ibu.id = jadwal_ibu.imunisasi_ibu_id join posyandu on jadwal_ibu.posyandu_id = posyandu.id where posyandu.id = $id")->result();
+        } else {
+            $barang = $this->db->query("SELECT jadwal_ibu.*, kegiatan.nama as kegiatan_nama, penyuluhan_ibu.nama as penyuluhan_ibu_nama, imunisasi_ibu.nama as imunisasi_ibu_nama, posyandu.nama as posyandu_nama FROM jadwal_ibu join kegiatan on kegiatan.id = jadwal_ibu.kegiatan_id join penyuluhan_ibu on penyuluhan_ibu.id = jadwal_ibu.penyuluhan_ibu_id join imunisasi_ibu on imunisasi_ibu.id = jadwal_ibu.imunisasi_ibu_id join posyandu on jadwal_ibu.posyandu_id = posyandu.id")->result();
+        }
+        $no = 1;
+        foreach ($barang as $data) {
+            $pdf->Cell(8, 6, $no, 1, 0);
+            $pdf->Cell(45, 6, $data->jadwal, 1, 0);
+            $pdf->Cell(45, 6, $data->kegiatan_nama, 1, 0);
+            $pdf->Cell(50, 6, $data->imunisasi_ibu_nama, 1, 0);
+            $pdf->Cell(50, 6, $data->penyuluhan_ibu_nama, 1, 0);
+            $pdf->Cell(45, 6, $data->posyandu_nama, 1, 1);
+            $no++;
+        }
+
+        $pdf->Output();
     }
 }

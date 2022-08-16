@@ -208,15 +208,16 @@ class Jadwal_balita extends CI_Controller
 
             $resp = curl_exec($curl);
             curl_close($curl);
-            var_dump($resp);
+            $hasil = json_decode($resp, true)['error']['message'] ?? 'Berhasil';
         }
 
-        $this->updateDB();
+        $this->updateDB($hasil);
         redirect(site_url('jadwal_balita'));
     }
 
-    public function updateDB()
+    public function updateDB($hasil)
     {
+        $hasil == 'Berhasil' ? $hasil = 1 : $hasil = 0;
         $data = array(
             'status' => 1,
         );
@@ -227,7 +228,7 @@ class Jadwal_balita extends CI_Controller
         $data1 = array(
             'waktu' => date("Y-m-d H:i:s"),
             'posyandu_id' => $this->input->post('posyandu_id'),
-            'status' => 'Berhasil',
+            'status' => $hasil,
         );
         $this->m_pesan->insert($data1);
     }

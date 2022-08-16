@@ -27,6 +27,12 @@ class Pesan extends CI_Controller
         $this->load->view('partials/v_footer');
     }
 
+    public function delete()
+    {
+        $this->m_pesan->delete($this->input->post('id'));
+        redirect(site_url('pesan'));
+    }
+
     public function cetak_pdf()
     {
         $pdf = new FPDF('P', 'mm', 'Letter');

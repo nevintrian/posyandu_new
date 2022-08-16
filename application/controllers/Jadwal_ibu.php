@@ -209,17 +209,16 @@ class Jadwal_ibu extends CI_Controller
 
             $resp = curl_exec($curl);
             curl_close($curl);
-
-            // print_r(json_decode($resp, true)['error']['message']);
-            // die();
+            $hasil = json_decode($resp, true)['error']['message'] ?? 'Berhasil';
         }
 
-        $this->updateDB();
+        $this->updateDB($hasil);
         redirect(site_url('jadwal_ibu'));
     }
 
-    public function updateDB()
+    public function updateDB($hasil)
     {
+        $hasil == 'Berhasil' ? $hasil = 1 : $hasil = 0;
         $data = array(
             'status' => 1,
         );
@@ -230,7 +229,7 @@ class Jadwal_ibu extends CI_Controller
         $data1 = array(
             'waktu' => date("Y-m-d H:i:s"),
             'posyandu_id' => $this->input->post('posyandu_id'),
-            'status' => 'Berhasil',
+            'status' => $hasil,
         );
         $this->m_pesan->insert($data1);
     }

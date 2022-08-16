@@ -12,6 +12,9 @@
                         <div class="card-header">
                             <h3 class="card-title">Data Jadwal Ibu Hamil</h3>
                         </div>
+                        <div class="card-header">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Tambah</button>
+                        </div>
                         <div class="card-header posyandu-header">
                             <a href="<?php echo base_url("jadwal_ibu"); ?>" class="btn btn-info">All</a>
                             <?php

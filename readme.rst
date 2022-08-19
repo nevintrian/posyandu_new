@@ -8,27 +8,35 @@ Username dan Password
 Admin
 *******************
 
-username : admin@gmail.com
+Username : admin@gmail.com
+
+
 Password : admin123
 
 **************************
 Kader
 **************************
 
-username : kader@gmail.com
+Username : kader@gmail.com
+
+
 Password : kader123
 
 *******************
 Kader lain
 *******************
 
-username : kaderlain@gmail.com
+Username : kaderlain@gmail.com
+
+
 password : kaderlain123
 
 ************
 Bidan
 ************
 
-username :  bidan@gmail.com
-password : bidan123
+Username :  bidan@gmail.com
+
+
+Password : bidan123
 

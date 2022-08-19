@@ -25,7 +25,11 @@ class Jadwal_ibu extends CI_Controller
     {
         $this->load->view('partials/v_sidebar');
         $config['total_rows'] = $this->m_jadwal_ibu->total_rows();
-        $jadwal_ibu = $this->m_jadwal_ibu->get_limit_data();
+        if ($this->session->userdata('level') == 'kader') {
+            $jadwal_ibu = $this->m_jadwal_ibu->get_limit_data_kader();
+        } else {
+            $jadwal_ibu = $this->m_jadwal_ibu->get_limit_data();
+        }
         $kegiatan = $this->m_kegiatan->get_limit_data();
         $imunisasi_ibu = $this->m_imunisasi_ibu->get_limit_data();
         $penyuluhan_ibu = $this->m_penyuluhan_ibu->get_limit_data();

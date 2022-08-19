@@ -25,7 +25,13 @@ class Jadwal_balita extends CI_Controller
     {
         $this->load->view('partials/v_sidebar');
         $config['total_rows'] = $this->m_jadwal_balita->total_rows();
-        $jadwal_balita = $this->m_jadwal_balita->get_limit_data();
+        if ($this->session->userdata('level') == 'kader') {
+            $jadwal_balita = $this->m_jadwal_balita->get_limit_data_kader();
+        } else {
+            $jadwal_balita = $this->m_jadwal_balita->get_limit_data();
+        }
+
+
         $kegiatan = $this->m_kegiatan->get_limit_data();
         $imunisasi_balita = $this->m_imunisasi_balita->get_limit_data();
         $penyuluhan_balita = $this->m_penyuluhan_balita->get_limit_data();

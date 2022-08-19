@@ -15,16 +15,20 @@
                         <div class="card-header">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Tambah</button>
                         </div>
-                        <div class="card-header posyandu-header">
-                            <a href="<?php echo base_url("jadwal_balita"); ?>" class="btn btn-info">All</a>
-                            <?php
-                            foreach ($posyandu_data as $posyandu) {
-                            ?>
-                                <a href="<?php echo base_url("jadwal_balita/posyandu/$posyandu->id"); ?>" class="btn btn-info"><?= $posyandu->nama ?></a>
-                            <?php
-                            }
-                            ?>
-                        </div>
+                        <?php if ($this->session->userdata('level') == 'admin' || $this->session->userdata('level') == 'bidan') { ?>
+                            <div class="card-header posyandu-header">
+                                <a href="<?php echo base_url("jadwal_balita"); ?>" class="btn btn-info">All</a>
+                                <?php
+                                foreach ($posyandu_data as $posyandu) {
+                                ?>
+                                    <a href="<?php echo base_url("jadwal_balita/posyandu/$posyandu->id"); ?>" class="btn btn-info"><?= $posyandu->nama ?></a>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        <?php
+                        }
+                        ?>
                         <div class="card-body">
                             <div class="col-md-12">
                                 <div class="card-body p-0">
@@ -55,7 +59,7 @@
                                                         <a href="#" class="btn btn-primary btn-view" data-id="<?= $jadwal_balita->id; ?>" data-jadwal="<?= $jadwal_balita->jadwal; ?>" data-kegiatan_nama="<?= $jadwal_balita->kegiatan_nama; ?>" data-imunisasi_balita_nama="<?= $jadwal_balita->imunisasi_balita_nama; ?>" data-penyuluhan_balita_nama="<?= $jadwal_balita->penyuluhan_balita_nama; ?>" data-posyandu_nama="<?= $jadwal_balita->posyandu_nama; ?>"><i class="fa fa-eye"></i></a>
                                                         <a href="#" class="btn btn-info btn-edit" data-id="<?= $jadwal_balita->id; ?>" data-jadwal="<?= $jadwal_balita->jadwal; ?>" data-kegiatan_id="<?= $jadwal_balita->kegiatan_id; ?>" data-imunisasi_balita_id="<?= $jadwal_balita->imunisasi_balita_id; ?>" data-penyuluhan_balita_id="<?= $jadwal_balita->penyuluhan_balita_id; ?>" data-posyandu_id="<?= $jadwal_balita->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
                                                         <a href="#" class="btn btn-danger btn-delete" data-id="<?= $jadwal_balita->id; ?>"><i class="fa fa-trash"></i></a>
-                                                        <?php if ($jadwal_balita->status == 0) { ?>
+                                                        <?php if ($jadwal_balita->status == 0 && $this->session->userdata('level') == 'admin') { ?>
                                                             <form method="post" class="d-inline" action="<?php echo base_url("jadwal_balita/send_whatsapp"); ?>">
                                                                 <input type="hidden" name="id" class="id" value="<?= $jadwal_balita->id ?>">
                                                                 <input type="hidden" name="jadwal" class="jadwal" value="<?= $jadwal_balita->jadwal ?>">
@@ -136,15 +140,25 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>Posyandu</label>
-                        <select name="posyandu_id" class="form-control" required>
-                            <option value="">-- Pilih Posyandu --</option>
-                            <?php foreach ($posyandu_data as $posyandu) : ?>
-                                <option value="<?= $posyandu->id; ?>"><?= $posyandu->nama; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+                    <?php
+                    if ($this->session->userdata('level') != 'kader') {
+                    ?>
+                        <div class="form-group">
+                            <label>Posyandu</label>
+                            <select name="posyandu_id" class="form-control" required>
+                                <option value="">-- Pilih Posyandu --</option>
+                                <?php foreach ($posyandu_data as $posyandu) : ?>
+                                    <option value="<?= $posyandu->id; ?>"><?= $posyandu->nama; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    <?php
+                    } else {
+                    ?>
+                        <input type="hidden" name="posyandu_id" class="posyandu_id" value="<?= $this->session->userdata('posyandu_id') ?>">
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -199,15 +213,26 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>Posyandu</label>
-                        <select name="posyandu_id" class="form-control posyandu_id" required>
-                            <option value="">-- Pilih Posyandu --</option>
-                            <?php foreach ($posyandu_data as $posyandu) : ?>
-                                <option value="<?= $posyandu->id; ?>"><?= $posyandu->nama; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
+
+                    <?php
+                    if ($this->session->userdata('level') != 'kader') {
+                    ?>
+                        <div class="form-group">
+                            <label>Posyandu</label>
+                            <select name="posyandu_id" class="form-control posyandu_id" required>
+                                <option value="">-- Pilih Posyandu --</option>
+                                <?php foreach ($posyandu_data as $posyandu) : ?>
+                                    <option value="<?= $posyandu->id; ?>"><?= $posyandu->nama; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    <?php
+                    } else {
+                    ?>
+                        <input type="hidden" name="posyandu_id" class="posyandu_id" value="<?= $this->session->userdata('posyandu_id') ?>">
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id" class="id">

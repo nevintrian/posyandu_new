@@ -76,7 +76,7 @@
               </a>
             </li>
             <?php
-            if ($this->session->userdata('level') == 'admin' || $this->session->userdata('level') == 'bidan') {
+            if ($this->session->userdata('level') != null) {
             ?>
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -87,18 +87,24 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="<?php echo base_url("kader"); ?>" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data Kader</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="<?php echo base_url("bidan"); ?>" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data Bidan</p>
-                    </a>
-                  </li>
+                  <?php
+                  if ($this->session->userdata('level') == 'admin') {
+                  ?>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url("kader"); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Kader</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url("bidan"); ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Bidan</p>
+                      </a>
+                    </li>
+                  <?php
+                  }
+                  ?>
                   <li class="nav-item">
                     <a href="<?php echo base_url("ibu"); ?>" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
@@ -195,25 +201,6 @@
                   ?>
 
                 </ul>
-              </li>
-            <?php
-            } else if ($this->session->userdata('level') == 'kader') {
-            ?>
-              <li class="nav-item">
-                <a href="<?php echo base_url("ibu"); ?>" class="nav-link">
-                  <i class="nav-icon fas fa-users"></i>
-                  <p>
-                    Data Ibu Hamil
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url("balita"); ?>" class="nav-link">
-                  <i class="nav-icon fas fa-users"></i>
-                  <p>
-                    Data Balita
-                  </p>
-                </a>
               </li>
             <?php
             } else {

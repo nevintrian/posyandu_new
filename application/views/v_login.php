@@ -19,19 +19,21 @@
 
 <body class="hold-transition login-page">
     <div class="login-box">
-        <div class="login-logo">
-            <b>Login </b>SIPADU
+        <div class="login-logo mt-5">
+            <!-- <b>Login </b> -->
             <div class="row justify-content-center">
             <div class="image">
-                <img src="<?php echo base_url('templates/dist/img/bidan.png'); ?>" class="w-75" alt="User Image">
+                <img src="<?php echo base_url('templates/dist/img/logo_Sipadu.png'); ?>" class="w-50" alt="User Image">
+                <img src="<?php echo base_url('templates/dist/img/bidanbayi.png'); ?>" class="w-50" alt="User Image">
             </div>
         </div>
         </div>
         
         <!-- /.login-logo -->
-        <div class="card">
+        <div class="card mb-5">
             <div class="card-body login-card-body rounded shadow-lg">
-                <p class="login-box-msg">Sistem Informasi Posyandu</p>
+                <p class="login-box-msg text-bold fs-2">Sistem Informasi Posyandu</p>
+                <p class="login-box-msg">Gerbangmas Siaga Lumajang</p>
 
                 <form action="<?php echo base_url("login"); ?>" method="post">
                     <div class="input-group mb-3">
@@ -53,7 +55,7 @@
                     <div class="row justify-content-center">
                         <!-- /.col -->
                         <div class="col-4">
-                            <button style="background-color: #72BDB6; border-color: white;" type="submit" class="btn btn-primary btn-block">Masuk</button>
+                            <button style="background-color: #10A5DD; border-color: white;" type="submit" class="btn btn-primary btn-block">Masuk</button>
                         </div>
                         <!-- /.col -->
                     </div>

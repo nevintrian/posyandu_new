@@ -69,6 +69,8 @@ class Balita extends CI_Controller
             'orangtua' => $this->input->post('orangtua'),
             'telepon' => $this->input->post('telepon'),
             'alamat' => $this->input->post('alamat'),
+            'rt' => $this->input->post('rt'),
+            'rw' => $this->input->post('rw'),
             'posyandu_id' => $this->input->post('posyandu_id'),
         );
         $this->m_balita->insert($data);
@@ -90,6 +92,8 @@ class Balita extends CI_Controller
             'orangtua' => $this->input->post('orangtua'),
             'telepon' => $this->input->post('telepon'),
             'alamat' => $this->input->post('alamat'),
+            'rt' => $this->input->post('rt'),
+            'rw' => $this->input->post('rw'),
             'posyandu_id' => $this->input->post('posyandu_id'),
         );
 
@@ -105,7 +109,7 @@ class Balita extends CI_Controller
 
     public function cetak_pdf($id)
     {
-        $pdf = new FPDF('L', 'mm', array(560, 350));
+        $pdf = new FPDF('L', 'mm', array(600, 350));
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 16);
         if (is_numeric($id)) {
@@ -128,6 +132,8 @@ class Balita extends CI_Controller
         $pdf->Cell(45, 6, 'Orangtua', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Telepon', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Alamat', 1, 0, 'C');
+        $pdf->Cell(20, 6, 'RT', 1, 0, 'C');
+        $pdf->Cell(20, 6, 'RW', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Posyandu', 1, 1, 'C');
         $pdf->SetFont('Arial', '', 10);
         if (is_numeric($id)) {
@@ -150,6 +156,8 @@ class Balita extends CI_Controller
             $pdf->Cell(45, 6, $data->orangtua, 1, 0);
             $pdf->Cell(45, 6, $data->telepon, 1, 0);
             $pdf->Cell(45, 6, $data->alamat, 1, 0);
+            $pdf->Cell(20, 6, $data->rt, 1, 0);
+            $pdf->Cell(20, 6, $data->rw, 1, 0);
             $pdf->Cell(45, 6, $data->posyandu_nama, 1, 1);
             $no++;
         }

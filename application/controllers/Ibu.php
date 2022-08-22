@@ -59,6 +59,8 @@ class Ibu extends CI_Controller
             'nama_ibu' => $this->input->post('nama_ibu'),
             'nama_suami' => $this->input->post('nama_suami'),
             'alamat' => $this->input->post('alamat'),
+            'rt' => $this->input->post('rt'),
+            'rw' => $this->input->post('rw'),
             'tanggal_daftar' => $this->input->post('tanggal_daftar'),
             'umur_kehamilan' => $this->input->post('umur_kehamilan'),
             'keluhan' => $this->input->post('keluhan'),
@@ -75,6 +77,8 @@ class Ibu extends CI_Controller
             'nama_ibu' => $this->input->post('nama_ibu'),
             'nama_suami' => $this->input->post('nama_suami'),
             'alamat' => $this->input->post('alamat'),
+            'rt' => $this->input->post('rt'),
+            'rw' => $this->input->post('rw'),
             'tanggal_daftar' => $this->input->post('tanggal_daftar'),
             'umur_kehamilan' => $this->input->post('umur_kehamilan'),
             'keluhan' => $this->input->post('keluhan'),
@@ -105,13 +109,15 @@ class Ibu extends CI_Controller
         $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(8, 6, 'No', 1, 0, 'C');
-        $pdf->Cell(50, 6, 'Nama Ibu', 1, 0, 'C');
-        $pdf->Cell(50, 6, 'Nama Suami', 1, 0, 'C');
-        $pdf->Cell(50, 6, 'Alamat', 1, 0, 'C');
-        $pdf->Cell(50, 6, 'Tanggal Daftar', 1, 0, 'C');
-        $pdf->Cell(50, 6, 'Umur Kehamilan', 1, 0, 'C');
-        $pdf->Cell(50, 6, 'Keluhan', 1, 0, 'C');
-        $pdf->Cell(45, 6, 'Telepon', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Nama Ibu', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Nama Suami', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Alamat', 1, 0, 'C');
+        $pdf->Cell(20, 6, 'RT', 1, 0, 'C');
+        $pdf->Cell(20, 6, 'RW', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Tanggal Daftar', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Umur Kehamilan', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Keluhan', 1, 0, 'C');
+        $pdf->Cell(40, 6, 'Telepon', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Posyandu', 1, 1, 'C');
         $pdf->SetFont('Arial', '', 10);
         if (is_numeric($id)) {
@@ -122,13 +128,15 @@ class Ibu extends CI_Controller
         $no = 1;
         foreach ($barang as $data) {
             $pdf->Cell(8, 6, $no, 1, 0);
-            $pdf->Cell(50, 6, $data->nama_ibu, 1, 0);
-            $pdf->Cell(50, 6, $data->nama_suami, 1, 0);
-            $pdf->Cell(50, 6, $data->alamat, 1, 0);
-            $pdf->Cell(50, 6, $data->tanggal_daftar, 1, 0);
-            $pdf->Cell(50, 6, $data->umur_kehamilan, 1, 0);
-            $pdf->Cell(50, 6, $data->keluhan, 1, 0);
-            $pdf->Cell(45, 6, $data->telepon, 1, 0);
+            $pdf->Cell(45, 6, $data->nama_ibu, 1, 0);
+            $pdf->Cell(45, 6, $data->nama_suami, 1, 0);
+            $pdf->Cell(45, 6, $data->alamat, 1, 0);
+            $pdf->Cell(20, 6, $data->rt, 1, 0);
+            $pdf->Cell(20, 6, $data->rw, 1, 0);
+            $pdf->Cell(45, 6, $data->tanggal_daftar, 1, 0);
+            $pdf->Cell(45, 6, $data->umur_kehamilan, 1, 0);
+            $pdf->Cell(45, 6, $data->keluhan, 1, 0);
+            $pdf->Cell(40, 6, $data->telepon, 1, 0);
             $pdf->Cell(45, 6, $data->posyandu_nama, 1, 1);
             $no++;
         }

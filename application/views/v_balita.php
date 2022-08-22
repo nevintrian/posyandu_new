@@ -59,8 +59,8 @@
                                                     <td><?= $balita->alamat ?></td>
                                                     <td><?= $balita->posyandu_nama ?></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $balita->id; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_nama="<?= $balita->posyandu_nama; ?>"><i class="fa fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $balita->id; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_id="<?= $balita->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
+                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $balita->id; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-rt="<?= $balita->rt; ?>" data-rw="<?= $balita->rw; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_nama="<?= $balita->posyandu_nama; ?>"><i class="fa fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $balita->id; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-rt="<?= $balita->rt; ?>" data-rw="<?= $balita->rw; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_id="<?= $balita->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
                                                         <a href="#" class="btn btn-danger btn-delete" data-id="<?= $balita->id; ?>"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -102,31 +102,31 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama</label>
-                        <input type="text" class="form-control" name="nama" placeholder="Nama">
+                        <input type="text" class="form-control" name="nama" placeholder="Nama" required>
                     </div>
                     <div class="form-group">
                         <label>Tanggal Lahir</label>
-                        <input type="date" class="form-control" name="tanggal_lahir" placeholder="Tanggal Lahir">
+                        <input type="date" class="form-control" name="tanggal_lahir" placeholder="Tanggal Lahir" required>
                     </div>
                     <div class="form-group">
                         <label>Tanggal Ukur</label>
-                        <input type="date" class="form-control" name="tanggal_ukur" placeholder="Tanggal Ukur">
+                        <input type="date" class="form-control" name="tanggal_ukur" placeholder="Tanggal Ukur" required>
                     </div>
                     <div class="form-group">
-                        <label>Umur</label>
-                        <input type="number" class="form-control" name="umur" placeholder="Umur">
+                        <label>Umur (bulan)</label>
+                        <input type="number" class="form-control" name="umur" placeholder="Umur" required>
                     </div>
                     <div class="form-group">
-                        <label>Tinggi Badan</label>
-                        <input type="number" class="form-control" name="tinggi_badan" placeholder="Tinggi Badan">
+                        <label>Tinggi Badan (cm)</label>
+                        <input type="number" class="form-control" name="tinggi_badan" placeholder="Tinggi Badan" required>
                     </div>
                     <div class="form-group">
-                        <label>Berat Badan</label>
-                        <input type="number" class="form-control" name="berat_badan" placeholder="Berat Badan">
+                        <label>Berat Badan (kg)</label>
+                        <input type="number" class="form-control" name="berat_badan" placeholder="Berat Badan" required>
                     </div>
                     <div class="form-group">
-                        <label>Lingkar Kepala</label>
-                        <input type="number" class="form-control" name="lingkar_kepala" placeholder="Lingkar Kepala">
+                        <label>Lingkar Kepala (cm)</label>
+                        <input type="number" class="form-control" name="lingkar_kepala" placeholder="Lingkar Kepala" required>
                     </div>
                     <div class="form-group">
                         <label>Vitamin A</label>
@@ -146,15 +146,23 @@
                     </div>
                     <div class="form-group">
                         <label>Orangtua</label>
-                        <input type="text" class="form-control" name="orangtua" placeholder="Orangtua">
+                        <input type="text" class="form-control" name="orangtua" placeholder="Orangtua" required>
                     </div>
                     <div class="form-group">
                         <label>Telepon</label>
-                        <input type="number" class="form-control" name="telepon" placeholder="Telepon">
+                        <input type="number" class="form-control" name="telepon" placeholder="Telepon" required>
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" placeholder="Alamat">
+                        <input type="text" class="form-control" name="alamat" placeholder="Alamat" required>
+                    </div>
+                    <div class="form-group">
+                        <label>RT</label>
+                        <input type="text" class="form-control" name="rt" placeholder="RT" required>
+                    </div>
+                    <div class="form-group">
+                        <label>RW</label>
+                        <input type="text" class="form-control" name="rw" placeholder="RW" required>
                     </div>
                     <?php
                     if ($this->session->userdata('level') != 'kader') {
@@ -204,26 +212,26 @@
                     </div>
                     <div class="form-group">
                         <label>Tanggal Lahir</label>
-                        <input type="date" class="form-control tanggal_lahir" name="tanggal_lahir" placeholder="Tanggal Lahir required">
+                        <input type="date" class="form-control tanggal_lahir" name="tanggal_lahir" placeholder="Tanggal Lahir" required>
                     </div>
                     <div class="form-group">
                         <label>Tanggal Ukur</label>
                         <input type="date" class="form-control tanggal_ukur" name="tanggal_ukur" placeholder="Tanggal Ukur" required>
                     </div>
                     <div class="form-group">
-                        <label>Umur</label>
+                        <label>Umur (bulan)</label>
                         <input type="number" class="form-control umur" name="umur" placeholder="Umur" required>
                     </div>
                     <div class="form-group">
-                        <label>Tinggi Badan</label>
+                        <label>Tinggi Badan (cm)</label>
                         <input type="number" class="form-control tinggi_badan" name="tinggi_badan" placeholder="Tinggi Badan" required>
                     </div>
                     <div class="form-group">
-                        <label>Berat Badan</label>
+                        <label>Berat Badan (kg)</label>
                         <input type="number" class="form-control berat_badan" name="berat_badan" placeholder="Berat Badan" required>
                     </div>
                     <div class="form-group">
-                        <label>Lingkar Kepala</label>
+                        <label>Lingkar Kepala (cm)</label>
                         <input type="number" class="form-control lingkar_kepala" name="lingkar_kepala" placeholder="Lingkar Kepala" required>
                     </div>
                     <div class="form-group">
@@ -253,6 +261,14 @@
                     <div class="form-group">
                         <label>Alamat</label>
                         <input type="text" class="form-control alamat" name="alamat" placeholder="Alamat" required>
+                    </div>
+                    <div class="form-group">
+                        <label>RT</label>
+                        <input type="text" class="form-control rt" name="rt" placeholder="RT" required>
+                    </div>
+                    <div class="form-group">
+                        <label>RW</label>
+                        <input type="text" class="form-control rw" name="rw" placeholder="RW" required>
                     </div>
                     <?php
                     if ($this->session->userdata('level') != 'kader') {
@@ -310,19 +326,19 @@
                         <input type="date" class="form-control tanggal_ukur" name="tanggal_ukur" placeholder="Tanggal Ukur" disabled>
                     </div>
                     <div class="form-group">
-                        <label>Umur</label>
+                        <label>Umur (bulan)</label>
                         <input type="number" class="form-control umur" name="umur" placeholder="Umur" disabled>
                     </div>
                     <div class="form-group">
-                        <label>Tinggi Badan</label>
+                        <label>Tinggi Badan (cm)</label>
                         <input type="number" class="form-control tinggi_badan" name="tinggi_badan" placeholder="Tinggi Badan" disabled>
                     </div>
                     <div class="form-group">
-                        <label>Berat Badan</label>
+                        <label>Berat Badan (kg)</label>
                         <input type="number" class="form-control berat_badan" name="berat_badan" placeholder="Berat Badan" disabled>
                     </div>
                     <div class="form-group">
-                        <label>Lingkar Kepala</label>
+                        <label>Lingkar Kepala (cm)</label>
                         <input type="number" class="form-control lingkar_kepala" name="lingkar_kepala" placeholder="Lingkar Kepala" disabled>
                     </div>
                     <div class="form-group">
@@ -352,6 +368,14 @@
                     <div class="form-group">
                         <label>Alamat</label>
                         <input type="text" class="form-control alamat" name="alamat" placeholder="Alamat" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>RT</label>
+                        <input type="text" class="form-control rt" name="rt" placeholder="RT" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>RW</label>
+                        <input type="text" class="form-control rw" name="rw" placeholder="RW" disabled>
                     </div>
                     <div class="form-group">
                         <label>Posyandu</label>
@@ -411,6 +435,8 @@
             const orangtua = $(this).data('orangtua');
             const telepon = $(this).data('telepon');
             const alamat = $(this).data('alamat');
+            const rt = $(this).data('rt');
+            const rw = $(this).data('rw');
             const posyandu_id = $(this).data('posyandu_id');
             $('.id').val(id);
             $('.nama').val(nama);
@@ -425,6 +451,8 @@
             $('.orangtua').val(orangtua);
             $('.telepon').val(telepon);
             $('.alamat').val(alamat);
+            $('.rt').val(rt);
+            $('.rw').val(rw);
             $('.posyandu_id').val(posyandu_id);
             $('#editModal').modal('show');
         });
@@ -443,6 +471,8 @@
             const orangtua = $(this).data('orangtua');
             const telepon = $(this).data('telepon');
             const alamat = $(this).data('alamat');
+            const rt = $(this).data('rt');
+            const rw = $(this).data('rw');
             const posyandu_nama = $(this).data('posyandu_nama');
             $('.id').val(id);
             $('.nama').val(nama);
@@ -457,6 +487,8 @@
             $('.orangtua').val(orangtua);
             $('.telepon').val(telepon);
             $('.alamat').val(alamat);
+            $('.rt').val(rt);
+            $('.rw').val(rw);
             $('.posyandu_nama').val(posyandu_nama);
             $('#viewModal').modal('show');
         });

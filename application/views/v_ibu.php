@@ -56,8 +56,8 @@
                                                     <td><?= $ibu->telepon ?></td>
                                                     <td><?= $ibu->posyandu_nama ?></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $ibu->id; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-posyandu_nama="<?= $ibu->posyandu_nama; ?>"><i class="fa fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $ibu->id; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-posyandu_id="<?= $ibu->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
+                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $ibu->id; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-rt="<?= $ibu->rt; ?>" data-rw="<?= $ibu->rw; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-posyandu_nama="<?= $ibu->posyandu_nama; ?>"><i class="fa fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $ibu->id; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-rt="<?= $ibu->rt; ?>" data-rw="<?= $ibu->rw; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-posyandu_id="<?= $ibu->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
                                                         <a href="#" class="btn btn-danger btn-delete" data-id="<?= $ibu->id; ?>"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -98,31 +98,39 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Ibu</label>
-                        <input type="text" class="form-control" name="nama_ibu" placeholder="Nama Ibu">
+                        <input type="text" class="form-control" name="nama_ibu" placeholder="Nama Ibu" required>
                     </div>
                     <div class="form-group">
                         <label>Nama Suami</label>
-                        <input type="text" class="form-control" name="nama_suami" placeholder="Nama Suami">
+                        <input type="text" class="form-control" name="nama_suami" placeholder="Nama Suami" required>
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" placeholder="Alamat">
+                        <input type="text" class="form-control" name="alamat" placeholder="Alamat" required>
+                    </div>
+                    <div class="form-group">
+                        <label>RT</label>
+                        <input type="text" class="form-control" name="rt" placeholder="RT" required>
+                    </div>
+                    <div class="form-group">
+                        <label>RW</label>
+                        <input type="text" class="form-control" name="rw" placeholder="RW" required>
                     </div>
                     <div class="form-group">
                         <label>Tanggal Daftar</label>
-                        <input type="date" class="form-control" name="tanggal_daftar" placeholder="Tanggal Daftar">
+                        <input type="date" class="form-control" name="tanggal_daftar" placeholder="Tanggal Daftar" required>
                     </div>
                     <div class="form-group">
-                        <label>Umur Kehamilan</label>
-                        <input type="number" class="form-control" name="umur_kehamilan" placeholder="Umur Kehamilan">
+                        <label>Umur Kehamilan (bulan)</label>
+                        <input type="number" class="form-control" name="umur_kehamilan" placeholder="Umur Kehamilan" required>
                     </div>
                     <div class="form-group">
                         <label>Keluhan</label>
-                        <input type="text" class="form-control" name="keluhan" placeholder="Keluhan">
+                        <input type="text" class="form-control" name="keluhan" placeholder="Keluhan" required>
                     </div>
                     <div class="form-group">
                         <label>Telepon</label>
-                        <input type="number" class="form-control" name="telepon" placeholder="Telepon">
+                        <input type="number" class="form-control" name="telepon" placeholder="Telepon" required>
                     </div>
                     <?php
                     if ($this->session->userdata('level') != 'kader') {
@@ -168,31 +176,39 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Ibu</label>
-                        <input type="text" class="form-control nama_ibu" name="nama_ibu" placeholder="Nama Ibu">
+                        <input type="text" class="form-control nama_ibu" name="nama_ibu" placeholder="Nama Ibu" required>
                     </div>
                     <div class="form-group">
                         <label>Nama Suami</label>
-                        <input type="text" class="form-control nama_suami" name="nama_suami" placeholder="Nama Suami">
+                        <input type="text" class="form-control nama_suami" name="nama_suami" placeholder="Nama Suami" required>
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control alamat" name="alamat" placeholder="Alamat">
+                        <input type="text" class="form-control alamat" name="alamat" placeholder="Alamat" required>
+                    </div>
+                    <div class="form-group">
+                        <label>RT</label>
+                        <input type="text" class="form-control rt" name="rt" placeholder="RT" required>
+                    </div>
+                    <div class="form-group">
+                        <label>RW</label>
+                        <input type="text" class="form-control rw" name="rw" placeholder="RW" required>
                     </div>
                     <div class="form-group">
                         <label>Tanggal Daftar</label>
-                        <input type="date" class="form-control tanggal_daftar" name="tanggal_daftar" placeholder="Tanggal Daftar">
+                        <input type="date" class="form-control tanggal_daftar" name="tanggal_daftar" placeholder="Tanggal Daftar" required>
                     </div>
                     <div class="form-group">
-                        <label>Umur Kehamilan</label>
-                        <input type="number" class="form-control umur_kehamilan" name="umur_kehamilan" placeholder="Umur Kehamilan">
+                        <label>Umur Kehamilan (bulan)</label>
+                        <input type="number" class="form-control umur_kehamilan" name="umur_kehamilan" placeholder="Umur Kehamilan" required>
                     </div>
                     <div class="form-group">
                         <label>Keluhan</label>
-                        <input type="text" class="form-control keluhan" name="keluhan" placeholder="Keluhan">
+                        <input type="text" class="form-control keluhan" name="keluhan" placeholder="Keluhan" required>
                     </div>
                     <div class="form-group">
                         <label>Telepon</label>
-                        <input type="number" class="form-control telepon" name="telepon" placeholder="Telepon">
+                        <input type="number" class="form-control telepon" name="telepon" placeholder="Telepon" required>
                     </div>
                     <?php
                     if ($this->session->userdata('level') != 'kader') {
@@ -250,11 +266,19 @@
                         <input type="text" class="form-control alamat" name="alamat" placeholder="Alamat" disabled>
                     </div>
                     <div class="form-group">
+                        <label>RT</label>
+                        <input type="text" class="form-control rt" name="rt" placeholder="RT" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>RW</label>
+                        <input type="text" class="form-control rw" name="rw" placeholder="RW" disabled>
+                    </div>
+                    <div class="form-group">
                         <label>Tanggal Daftar</label>
                         <input type="date" class="form-control tanggal_daftar" name="tanggal_daftar" placeholder="Tanggal Daftar" disabled>
                     </div>
                     <div class="form-group">
-                        <label>Umur Kehamilan</label>
+                        <label>Umur Kehamilan (bulan)</label>
                         <input type="number" class="form-control umur_kehamilan" name="umur_kehamilan" placeholder="Umur Kehamilan" disabled>
                     </div>
                     <div class="form-group">
@@ -314,6 +338,8 @@
             const nama_ibu = $(this).data('nama_ibu');
             const nama_suami = $(this).data('nama_suami');
             const alamat = $(this).data('alamat');
+            const rt = $(this).data('rt');
+            const rw = $(this).data('rw');
             const tanggal_daftar = $(this).data('tanggal_daftar');
             const umur_kehamilan = $(this).data('umur_kehamilan');
             const keluhan = $(this).data('keluhan');
@@ -323,6 +349,8 @@
             $('.nama_ibu').val(nama_ibu);
             $('.nama_suami').val(nama_suami);
             $('.alamat').val(alamat);
+            $('.rt').val(rt);
+            $('.rw').val(rw);
             $('.tanggal_daftar').val(tanggal_daftar);
             $('.umur_kehamilan').val(umur_kehamilan);
             $('.keluhan').val(keluhan);
@@ -336,6 +364,8 @@
             const nama_ibu = $(this).data('nama_ibu');
             const nama_suami = $(this).data('nama_suami');
             const alamat = $(this).data('alamat');
+            const rt = $(this).data('rt');
+            const rw = $(this).data('rw');
             const tanggal_daftar = $(this).data('tanggal_daftar');
             const umur_kehamilan = $(this).data('umur_kehamilan');
             const keluhan = $(this).data('keluhan');
@@ -345,6 +375,8 @@
             $('.nama_ibu').val(nama_ibu);
             $('.nama_suami').val(nama_suami);
             $('.alamat').val(alamat);
+            $('.rt').val(rt);
+            $('.rw').val(rw);
             $('.tanggal_daftar').val(tanggal_daftar);
             $('.umur_kehamilan').val(umur_kehamilan);
             $('.keluhan').val(keluhan);

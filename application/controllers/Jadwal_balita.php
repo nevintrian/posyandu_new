@@ -232,7 +232,7 @@ class Jadwal_balita extends CI_Controller
 
 
         $data1 = array(
-            'waktu' => date("Y-m-d H:i:s"),
+            'waktu' => date("Y-m-d G:i:s"),
             'posyandu_id' => $this->input->post('posyandu_id'),
             'status' => $hasil,
         );

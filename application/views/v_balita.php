@@ -59,8 +59,8 @@
                                                     <td><?= $balita->alamat ?></td>
                                                     <td><?= $balita->posyandu_nama ?></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $balita->id; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-rt="<?= $balita->rt; ?>" data-rw="<?= $balita->rw; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_nama="<?= $balita->posyandu_nama; ?>"><i class="fa fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $balita->id; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-rt="<?= $balita->rt; ?>" data-rw="<?= $balita->rw; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_id="<?= $balita->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
+                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $balita->id; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-cara_ukur="<?= $balita->cara_ukur; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-rt="<?= $balita->rt; ?>" data-rw="<?= $balita->rw; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_nama="<?= $balita->posyandu_nama; ?>"><i class="fa fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $balita->id; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-cara_ukur="<?= $balita->cara_ukur; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-rt="<?= $balita->rt; ?>" data-rw="<?= $balita->rw; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_id="<?= $balita->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
                                                         <a href="#" class="btn btn-danger btn-delete" data-id="<?= $balita->id; ?>"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -119,6 +119,14 @@
                     <div class="form-group">
                         <label>Tinggi Badan (cm)</label>
                         <input type="number" class="form-control" name="tinggi_badan" placeholder="Tinggi Badan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Cara Ukur</label>
+                        <select name="cara_ukur" class="form-control" required>
+                            <option value="">-- Pilih Cara Ukur --</option>
+                            <option value="Tidur">Tidur</option>
+                            <option value="Berdiri">Berdiri</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Berat Badan (kg)</label>
@@ -225,6 +233,14 @@
                     <div class="form-group">
                         <label>Tinggi Badan (cm)</label>
                         <input type="number" class="form-control tinggi_badan" name="tinggi_badan" placeholder="Tinggi Badan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Cara Ukur</label>
+                        <select name="cara_ukur" class="form-control cara_ukur" required>
+                            <option value="">-- Pilih Cara Ukur --</option>
+                            <option value="Tidur">Tidur</option>
+                            <option value="Berdiri">Berdiri</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Berat Badan (kg)</label>
@@ -334,6 +350,14 @@
                         <input type="number" class="form-control tinggi_badan" name="tinggi_badan" placeholder="Tinggi Badan" disabled>
                     </div>
                     <div class="form-group">
+                        <label>Cara Ukur</label>
+                        <select name="cara_ukur" class="form-control cara_ukur" disabled>
+                            <option value="">-- Pilih Cara Ukur --</option>
+                            <option value="Tidur">Tidur</option>
+                            <option value="Berdiri">Berdiri</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>Berat Badan (kg)</label>
                         <input type="number" class="form-control berat_badan" name="berat_badan" placeholder="Berat Badan" disabled>
                     </div>
@@ -428,6 +452,7 @@
             const tanggal_ukur = $(this).data('tanggal_ukur');
             const umur = $(this).data('umur');
             const tinggi_badan = $(this).data('tinggi_badan');
+            const cara_ukur = $(this).data('cara_ukur');
             const berat_badan = $(this).data('berat_badan');
             const lingkar_kepala = $(this).data('lingkar_kepala');
             const vitamin_a = $(this).data('vitamin_a');
@@ -444,6 +469,7 @@
             $('.tanggal_ukur').val(tanggal_ukur);
             $('.umur').val(umur);
             $('.tinggi_badan').val(tinggi_badan);
+            $('.cara_ukur').val(cara_ukur);
             $('.berat_badan').val(berat_badan);
             $('.lingkar_kepala').val(lingkar_kepala);
             $('.vitamin_a').val(vitamin_a);
@@ -464,6 +490,7 @@
             const tanggal_ukur = $(this).data('tanggal_ukur');
             const umur = $(this).data('umur');
             const tinggi_badan = $(this).data('tinggi_badan');
+            const cara_ukur = $(this).data('cara_ukur');
             const berat_badan = $(this).data('berat_badan');
             const lingkar_kepala = $(this).data('lingkar_kepala');
             const vitamin_a = $(this).data('vitamin_a');
@@ -480,6 +507,7 @@
             $('.tanggal_ukur').val(tanggal_ukur);
             $('.umur').val(umur);
             $('.tinggi_badan').val(tinggi_badan);
+            $('.cara_ukur').val(cara_ukur);
             $('.berat_badan').val(berat_badan);
             $('.lingkar_kepala').val(lingkar_kepala);
             $('.vitamin_a').val(vitamin_a);

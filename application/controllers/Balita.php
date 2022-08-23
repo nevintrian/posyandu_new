@@ -62,6 +62,7 @@ class Balita extends CI_Controller
             'tanggal_ukur' => $this->input->post('tanggal_ukur'),
             'umur' => $this->input->post('umur'),
             'tinggi_badan' => $this->input->post('tinggi_badan'),
+            'cara_ukur' => $this->input->post('cara_ukur'),
             'berat_badan' => $this->input->post('berat_badan'),
             'lingkar_kepala' => $this->input->post('lingkar_kepala'),
             'vitamin_a' => $this->input->post('vitamin_a'),
@@ -85,6 +86,7 @@ class Balita extends CI_Controller
             'tanggal_ukur' => $this->input->post('tanggal_ukur'),
             'umur' => $this->input->post('umur'),
             'tinggi_badan' => $this->input->post('tinggi_badan'),
+            'cara_ukur' => $this->input->post('cara_ukur'),
             'berat_badan' => $this->input->post('berat_badan'),
             'lingkar_kepala' => $this->input->post('lingkar_kepala'),
             'vitamin_a' => $this->input->post('vitamin_a'),
@@ -109,7 +111,7 @@ class Balita extends CI_Controller
 
     public function cetak_pdf($id)
     {
-        $pdf = new FPDF('L', 'mm', array(600, 350));
+        $pdf = new FPDF('L', 'mm', array(630, 350));
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 16);
         if (is_numeric($id)) {
@@ -125,6 +127,7 @@ class Balita extends CI_Controller
         $pdf->Cell(45, 6, 'Tanggal Ukur', 1, 0, 'C');
         $pdf->Cell(20, 6, 'Umur', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Tinggi Badan', 1, 0, 'C');
+        $pdf->Cell(30, 6, 'Cara Ukur', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Berat Badan', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Lingkar Kepala', 1, 0, 'C');
         $pdf->Cell(30, 6, 'Vitamin A', 1, 0, 'C');
@@ -149,6 +152,7 @@ class Balita extends CI_Controller
             $pdf->Cell(45, 6, $data->tanggal_ukur, 1, 0);
             $pdf->Cell(20, 6, $data->umur, 1, 0);
             $pdf->Cell(45, 6, $data->tinggi_badan, 1, 0);
+            $pdf->Cell(30, 6, $data->cara_ukur, 1, 0);
             $pdf->Cell(45, 6, $data->berat_badan, 1, 0);
             $pdf->Cell(45, 6, $data->lingkar_kepala, 1, 0);
             $pdf->Cell(30, 6, $data->vitamin_a == 1 ? 'Sudah' : 'Belum', 1, 0);

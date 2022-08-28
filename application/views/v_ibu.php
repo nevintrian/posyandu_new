@@ -56,8 +56,8 @@
                                                     <td><?= $ibu->telepon ?></td>
                                                     <td><?= $ibu->posyandu_nama ?></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $ibu->id; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-rt="<?= $ibu->rt; ?>" data-rw="<?= $ibu->rw; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-posyandu_nama="<?= $ibu->posyandu_nama; ?>"><i class="fa fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $ibu->id; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-rt="<?= $ibu->rt; ?>" data-rw="<?= $ibu->rw; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-posyandu_id="<?= $ibu->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
+                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $ibu->id; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-rt="<?= $ibu->rt; ?>" data-rw="<?= $ibu->rw; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-posyandu_nama="<?= $ibu->posyandu_nama; ?>" data-usia_ibu="<?= $ibu->usia_ibu; ?>" data-usia_anak_terakhir="<?= $ibu->usia_anak_terakhir; ?>" data-sistol="<?= $ibu->sistol; ?>" data-diastol="<?= $ibu->diastol; ?>" data-diastol_miring="<?= $ibu->diastol_miring; ?>" data-diastol_terlentang="<?= $ibu->diastol_terlentang; ?>" data-berat_badan="<?= $ibu->berat_badan; ?>" data-tinggi_badan="<?= $ibu->tinggi_badan; ?>"><i class="fa fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $ibu->id; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-rt="<?= $ibu->rt; ?>" data-rw="<?= $ibu->rw; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-posyandu_id="<?= $ibu->posyandu_id; ?>" data-usia_ibu="<?= $ibu->usia_ibu; ?>" data-usia_anak_terakhir="<?= $ibu->usia_anak_terakhir; ?>" data-sistol="<?= $ibu->sistol; ?>" data-diastol="<?= $ibu->diastol; ?>" data-diastol_miring="<?= $ibu->diastol_miring; ?>" data-diastol_terlentang="<?= $ibu->diastol_terlentang; ?>" data-berat_badan="<?= $ibu->berat_badan; ?>" data-tinggi_badan="<?= $ibu->tinggi_badan; ?>"><i class="fa fa-marker"></i></a>
                                                         <a href="#" class="btn btn-danger btn-delete" data-id="<?= $ibu->id; ?>"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -121,8 +121,40 @@
                         <input type="date" class="form-control" name="tanggal_daftar" placeholder="Tanggal Daftar" required>
                     </div>
                     <div class="form-group">
+                        <label>Usia Ibu</label>
+                        <input type="text" class="form-control" name="usia_ibu" placeholder="Usia Ibu" required>
+                    </div>
+                    <div class="form-group">
                         <label>Umur Kehamilan (bulan)</label>
                         <input type="number" class="form-control" name="umur_kehamilan" placeholder="Umur Kehamilan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Usia Anak Terakhir (bulan)</label>
+                        <input type="number" class="form-control" name="usia_anak_terakhir" placeholder="Usia Anak Terakhir" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Sistol</label>
+                        <input type="text" class="form-control" name="sistol" placeholder="Siastol" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Diastol</label>
+                        <input type="text" class="form-control" name="diastol" placeholder="Diastol" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Diastol Miring</label>
+                        <input type="text" class="form-control" name="diastol_miring" placeholder="Diastol Miring" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Diastol Terlentang</label>
+                        <input type="text" class="form-control" name="diastol_terlentang" placeholder="Diastol Terlentang" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Berat Badan (kg)</label>
+                        <input type="number" class="form-control" name="berat_badan" placeholder="Berat Badan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tinggi Badan (cm)</label>
+                        <input type="number" class="form-control" name="tinggi_badan" placeholder="Tinggi Badan" required>
                     </div>
                     <div class="form-group">
                         <label>Keluhan</label>
@@ -199,8 +231,40 @@
                         <input type="date" class="form-control tanggal_daftar" name="tanggal_daftar" placeholder="Tanggal Daftar" required>
                     </div>
                     <div class="form-group">
+                        <label>Usia Ibu</label>
+                        <input type="text" class="form-control usia_ibu" name="usia_ibu" placeholder="Usia Ibu" required>
+                    </div>
+                    <div class="form-group">
                         <label>Umur Kehamilan (bulan)</label>
                         <input type="number" class="form-control umur_kehamilan" name="umur_kehamilan" placeholder="Umur Kehamilan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Usia Anak Terakhir (bulan)</label>
+                        <input type="number" class="form-control usia_anak_terakhir" name="usia_anak_terakhir" placeholder="Usia Anak Terakhir" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Sistol</label>
+                        <input type="text" class="form-control sistol" name="sistol" placeholder="Siastol" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Diastol</label>
+                        <input type="text" class="form-control diastol" name="diastol" placeholder="Diastol" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Diastol Miring</label>
+                        <input type="text" class="form-control diastol_miring" name="diastol_miring" placeholder="Diastol Miring" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Diastol Terlentang</label>
+                        <input type="text" class="form-control diastol_terlentang" name="diastol_terlentang" placeholder="Diastol Terlentang" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Berat Badan (kg)</label>
+                        <input type="number" class="form-control berat_badan" name="berat_badan" placeholder="Berat Badan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tinggi Badan (cm)</label>
+                        <input type="number" class="form-control tinggi_badan" name="tinggi_badan" placeholder="Tinggi Badan" required>
                     </div>
                     <div class="form-group">
                         <label>Keluhan</label>
@@ -278,8 +342,40 @@
                         <input type="date" class="form-control tanggal_daftar" name="tanggal_daftar" placeholder="Tanggal Daftar" disabled>
                     </div>
                     <div class="form-group">
+                        <label>Usia Ibu</label>
+                        <input type="text" class="form-control usia_ibu" name="usia_ibu" placeholder="Usia Ibu" disabled>
+                    </div>
+                    <div class="form-group">
                         <label>Umur Kehamilan (bulan)</label>
                         <input type="number" class="form-control umur_kehamilan" name="umur_kehamilan" placeholder="Umur Kehamilan" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Usia Anak Terakhir (bulan)</label>
+                        <input type="number" class="form-control usia_anak_terakhir" name="usia_anak_terakhir" placeholder="Usia Anak Terakhir" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Sistol</label>
+                        <input type="text" class="form-control sistol" name="sistol" placeholder="Siastol" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Diastol</label>
+                        <input type="text" class="form-control diastol" name="diastol" placeholder="Diastol" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Diastol Miring</label>
+                        <input type="text" class="form-control diastol_miring" name="diastol_miring" placeholder="Diastol Miring" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Diastol Terlentang</label>
+                        <input type="text" class="form-control diastol_terlentang" name="diastol_terlentang" placeholder="Diastol Terlentang" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Berat Badan (kg)</label>
+                        <input type="number" class="form-control berat_badan" name="berat_badan" placeholder="Berat Badan" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Tinggi Badan (cm)</label>
+                        <input type="number" class="form-control tinggi_badan" name="tinggi_badan" placeholder="Tinggi Badan" disabled>
                     </div>
                     <div class="form-group">
                         <label>Keluhan</label>
@@ -344,6 +440,14 @@
             const umur_kehamilan = $(this).data('umur_kehamilan');
             const keluhan = $(this).data('keluhan');
             const telepon = $(this).data('telepon');
+            const usia_anak_terakhir = $(this).data('usia_anak_terakhir');
+            const sistol = $(this).data('sistol');
+            const diastol = $(this).data('diastol');
+            const diastol_miring = $(this).data('diastol_miring');
+            const diastol_terlentang = $(this).data('diastol_terlentang');
+            const berat_badan = $(this).data('berat_badan');
+            const tinggi_badan = $(this).data('tinggi_badan');
+            const usia_ibu = $(this).data('usia_ibu');
             const posyandu_id = $(this).data('posyandu_id');
             $('.id').val(id);
             $('.nama_ibu').val(nama_ibu);
@@ -355,6 +459,14 @@
             $('.umur_kehamilan').val(umur_kehamilan);
             $('.keluhan').val(keluhan);
             $('.telepon').val(telepon);
+            $('.usia_anak_terakhir').val(usia_anak_terakhir);
+            $('.sistol').val(sistol);
+            $('.diastol').val(diastol);
+            $('.diastol_miring').val(diastol_miring);
+            $('.diastol_terlentang').val(diastol_terlentang);
+            $('.berat_badan').val(berat_badan);
+            $('.tinggi_badan').val(tinggi_badan);
+            $('.usia_ibu').val(usia_ibu);
             $('.posyandu_id').val(posyandu_id);
             $('#editModal').modal('show');
         });
@@ -370,6 +482,14 @@
             const umur_kehamilan = $(this).data('umur_kehamilan');
             const keluhan = $(this).data('keluhan');
             const telepon = $(this).data('telepon');
+            const usia_anak_terakhir = $(this).data('usia_anak_terakhir');
+            const sistol = $(this).data('sistol');
+            const diastol = $(this).data('diastol');
+            const diastol_miring = $(this).data('diastol_miring');
+            const diastol_terlentang = $(this).data('diastol_terlentang');
+            const berat_badan = $(this).data('berat_badan');
+            const tinggi_badan = $(this).data('tinggi_badan');
+            const usia_ibu = $(this).data('usia_ibu');
             const posyandu_nama = $(this).data('posyandu_nama');
             $('.id').val(id);
             $('.nama_ibu').val(nama_ibu);
@@ -381,6 +501,14 @@
             $('.umur_kehamilan').val(umur_kehamilan);
             $('.keluhan').val(keluhan);
             $('.telepon').val(telepon);
+            $('.usia_anak_terakhir').val(usia_anak_terakhir);
+            $('.sistol').val(sistol);
+            $('.diastol').val(diastol);
+            $('.diastol_miring').val(diastol_miring);
+            $('.diastol_terlentang').val(diastol_terlentang);
+            $('.berat_badan').val(berat_badan);
+            $('.tinggi_badan').val(tinggi_badan);
+            $('.usia_ibu').val(usia_ibu);
             $('.posyandu_nama').val(posyandu_nama);
             $('#viewModal').modal('show');
         });

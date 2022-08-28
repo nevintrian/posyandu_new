@@ -62,7 +62,15 @@ class Ibu extends CI_Controller
             'rt' => $this->input->post('rt'),
             'rw' => $this->input->post('rw'),
             'tanggal_daftar' => $this->input->post('tanggal_daftar'),
+            'usia_ibu' => $this->input->post('usia_ibu'),
             'umur_kehamilan' => $this->input->post('umur_kehamilan'),
+            'usia_anak_terakhir' => $this->input->post('usia_anak_terakhir'),
+            'sistol' => $this->input->post('sistol'),
+            'diastol' => $this->input->post('diastol'),
+            'diastol_miring' => $this->input->post('diastol_miring'),
+            'diastol_terlentang' => $this->input->post('diastol_terlentang'),
+            'berat_badan' => $this->input->post('berat_badan'),
+            'tinggi_badan' => $this->input->post('tinggi_badan'),
             'keluhan' => $this->input->post('keluhan'),
             'telepon' => $this->input->post('telepon'),
             'posyandu_id' => $this->input->post('posyandu_id'),
@@ -80,7 +88,15 @@ class Ibu extends CI_Controller
             'rt' => $this->input->post('rt'),
             'rw' => $this->input->post('rw'),
             'tanggal_daftar' => $this->input->post('tanggal_daftar'),
+            'usia_ibu' => $this->input->post('usia_ibu'),
             'umur_kehamilan' => $this->input->post('umur_kehamilan'),
+            'usia_anak_terakhir' => $this->input->post('usia_anak_terakhir'),
+            'sistol' => $this->input->post('sistol'),
+            'diastol' => $this->input->post('diastol'),
+            'diastol_miring' => $this->input->post('diastol_miring'),
+            'diastol_terlentang' => $this->input->post('diastol_terlentang'),
+            'berat_badan' => $this->input->post('berat_badan'),
+            'tinggi_badan' => $this->input->post('tinggi_badan'),
             'keluhan' => $this->input->post('keluhan'),
             'telepon' => $this->input->post('telepon'),
             'posyandu_id' => $this->input->post('posyandu_id'),
@@ -98,7 +114,7 @@ class Ibu extends CI_Controller
 
     public function cetak_pdf($id)
     {
-        $pdf = new FPDF('L', 'mm', 'A3');
+        $pdf = new FPDF('L', 'mm',  array(790, 350));
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 16);
         if (is_numeric($id)) {
@@ -115,7 +131,15 @@ class Ibu extends CI_Controller
         $pdf->Cell(20, 6, 'RT', 1, 0, 'C');
         $pdf->Cell(20, 6, 'RW', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Tanggal Daftar', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Usia Ibu', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Umur Kehamilan', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Usia Anak Terakhir', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Sistol', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Diastol', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Diastol Miring', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Diastol Terlentang', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Berat Badan (kg)', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Tinggi Badan (cm)', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Keluhan', 1, 0, 'C');
         $pdf->Cell(40, 6, 'Telepon', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Posyandu', 1, 1, 'C');
@@ -134,7 +158,15 @@ class Ibu extends CI_Controller
             $pdf->Cell(20, 6, $data->rt, 1, 0);
             $pdf->Cell(20, 6, $data->rw, 1, 0);
             $pdf->Cell(45, 6, $data->tanggal_daftar, 1, 0);
+            $pdf->Cell(45, 6, $data->usia_ibu, 1, 0);
             $pdf->Cell(45, 6, $data->umur_kehamilan, 1, 0);
+            $pdf->Cell(45, 6, $data->usia_anak_terakhir, 1, 0);
+            $pdf->Cell(45, 6, $data->sistol, 1, 0);
+            $pdf->Cell(45, 6, $data->diastol, 1, 0);
+            $pdf->Cell(45, 6, $data->diastol_miring, 1, 0);
+            $pdf->Cell(45, 6, $data->diastol_terlentang, 1, 0);
+            $pdf->Cell(45, 6, $data->berat_badan, 1, 0);
+            $pdf->Cell(45, 6, $data->tinggi_badan, 1, 0);
             $pdf->Cell(45, 6, $data->keluhan, 1, 0);
             $pdf->Cell(40, 6, $data->telepon, 1, 0);
             $pdf->Cell(45, 6, $data->posyandu_nama, 1, 1);

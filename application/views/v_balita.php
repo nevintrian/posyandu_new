@@ -35,9 +35,8 @@
                                         <thead>
                                             <tr>
                                                 <th style="width: 10px">No</th>
+                                                <th>NIK</th>
                                                 <th>Nama</th>
-                                                <th>Tanggal Lahir</th>
-                                                <th>Umur</th>
                                                 <th>Orangtua</th>
                                                 <th>Telepon</th>
                                                 <th>Alamat</th>
@@ -51,16 +50,15 @@
                                             foreach ($balita_data as $balita) { ?>
                                                 <tr>
                                                     <td style="width: 10px"><?= $i ?></td>
+                                                    <td><?= $balita->nik ?></td>
                                                     <td><?= $balita->nama ?></td>
-                                                    <td><?= $balita->tanggal_lahir ?></td>
-                                                    <td><?= $balita->umur ?></td>
                                                     <td><?= $balita->orangtua ?></td>
                                                     <td><?= $balita->telepon ?></td>
                                                     <td><?= $balita->alamat ?></td>
                                                     <td><?= $balita->posyandu_nama ?></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $balita->id; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-cara_ukur="<?= $balita->cara_ukur; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-rt="<?= $balita->rt; ?>" data-rw="<?= $balita->rw; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_nama="<?= $balita->posyandu_nama; ?>"><i class="fa fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $balita->id; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-cara_ukur="<?= $balita->cara_ukur; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-rt="<?= $balita->rt; ?>" data-rw="<?= $balita->rw; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_id="<?= $balita->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
+                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $balita->id; ?>" data-nik="<?= $balita->nik; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-cara_ukur="<?= $balita->cara_ukur; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-rt="<?= $balita->rt; ?>" data-rw="<?= $balita->rw; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_nama="<?= $balita->posyandu_nama; ?>"><i class="fa fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $balita->id; ?>" data-nik="<?= $balita->nik; ?>" data-nama="<?= $balita->nama; ?>" data-tanggal_lahir="<?= $balita->tanggal_lahir; ?>" data-tanggal_ukur="<?= $balita->tanggal_ukur; ?>" data-umur="<?= $balita->umur; ?>" data-tinggi_badan="<?= $balita->tinggi_badan; ?>" data-cara_ukur="<?= $balita->cara_ukur; ?>" data-berat_badan="<?= $balita->berat_badan; ?>" data-lingkar_kepala="<?= $balita->lingkar_kepala; ?>" data-vitamin_a="<?= $balita->vitamin_a; ?>" data-obat_cacing="<?= $balita->obat_cacing; ?>" data-alamat="<?= $balita->alamat; ?>" data-rt="<?= $balita->rt; ?>" data-rw="<?= $balita->rw; ?>" data-telepon="<?= $balita->telepon; ?>" data-orangtua="<?= $balita->orangtua; ?>" data-posyandu_id="<?= $balita->posyandu_id; ?>"><i class="fa fa-marker"></i></a>
                                                         <a href="#" class="btn btn-danger btn-delete" data-id="<?= $balita->id; ?>"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -100,13 +98,27 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group" id="nik_lama">
+                        <label>NIK Pasien Lama (Opsional)</label>
+                        <select name="nik" id="data_nik" class="form-control" required>
+                            <option value="">-- Pilih NIK --</option>
+                            <?php foreach ($balita_data as $balita) : ?>
+                                <option value="<?= $balita->id; ?>"><?= $balita->nik; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label>NIK</label>
+                        <input type="text" class="form-control nik" name="nik" placeholder="NIK" required>
+                    </div>
                     <div class="form-group">
                         <label>Nama</label>
-                        <input type="text" class="form-control" name="nama" placeholder="Nama" required>
+                        <input type="text" class="form-control nama" name="nama" placeholder="Nama" required>
                     </div>
                     <div class="form-group">
                         <label>Tanggal Lahir</label>
-                        <input type="date" class="form-control" name="tanggal_lahir" placeholder="Tanggal Lahir" required>
+                        <input type="date" class="form-control tanggal_lahir" name="tanggal_lahir" placeholder="Tanggal Lahir" required>
                     </div>
                     <div class="form-group">
                         <label>Tanggal Ukur</label>
@@ -154,30 +166,30 @@
                     </div>
                     <div class="form-group">
                         <label>Orangtua</label>
-                        <input type="text" class="form-control" name="orangtua" placeholder="Orangtua" required>
+                        <input type="text" class="form-control orangtua" name="orangtua" placeholder="Orangtua" required>
                     </div>
                     <div class="form-group">
                         <label>Telepon</label>
-                        <input type="number" class="form-control" name="telepon" placeholder="Telepon" required>
+                        <input type="number" class="form-control telepon" name="telepon" placeholder="Telepon" required>
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" placeholder="Alamat" required>
+                        <input type="text" class="form-control alamat" name="alamat" placeholder="Alamat" required>
                     </div>
                     <div class="form-group">
                         <label>RT</label>
-                        <input type="text" class="form-control" name="rt" placeholder="RT" required>
+                        <input type="text" class="form-control rt" name="rt" placeholder="RT" required>
                     </div>
                     <div class="form-group">
                         <label>RW</label>
-                        <input type="text" class="form-control" name="rw" placeholder="RW" required>
+                        <input type="text" class="form-control rw" name="rw" placeholder="RW" required>
                     </div>
                     <?php
                     if ($this->session->userdata('level') != 'kader') {
                     ?>
                         <div class="form-group">
                             <label>Posyandu</label>
-                            <select name="posyandu_id" class="form-control" required>
+                            <select name="posyandu_id" class="form-control posyandu_id" required>
                                 <option value="">-- Pilih Posyandu --</option>
                                 <?php foreach ($posyandu_data as $posyandu) : ?>
                                     <option value="<?= $posyandu->id; ?>"><?= $posyandu->nama; ?></option>
@@ -214,6 +226,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group">
+                        <label>NIK</label>
+                        <input type="text" class="form-control nik" name="nik" placeholder="NIK" required>
+                    </div>
                     <div class="form-group">
                         <label>Nama</label>
                         <input type="text" class="form-control nama" name="nama" placeholder="Nama" required>
@@ -330,6 +346,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <label>NIK</label>
+                        <input type="text" class="form-control nik" name="nik" placeholder="NIK" disabled>
+                    </div>
+                    <div class="form-group">
                         <label>Nama</label>
                         <input type="text" class="form-control nama" name="nama" placeholder="Nama" disabled>
                     </div>
@@ -444,9 +464,31 @@
 <script src="<?php echo base_url('templates/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 <script>
     $(document).ready(function() {
+        $('#data_nik').change(function() {
+            var id = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url('balita/cek_data_balita') ?>',
+                Cache: false,
+                dataType: "json",
+                data: 'id=' + id,
+                success: function(resp) {
+                    $('.nik').val(resp.nik);
+                    $('.nama').val(resp.nama);
+                    $('.tanggal_lahir').val(resp.tanggal_lahir);
+                    $('.orangtua').val(resp.orangtua);
+                    $('.alamat').val(resp.alamat);
+                    $('.rt').val(resp.rt);
+                    $('.rw').val(resp.rw);
+                    $('.telepon').val(resp.telepon);
+                    $('.posyandu_id').val(resp.posyandu_id);
+                }
+            });
+        });
         $('#datatables').DataTable();
         $('.btn-edit').on('click', function() {
             const id = $(this).data('id');
+            const nik = $(this).data('nik');
             const nama = $(this).data('nama');
             const tanggal_lahir = $(this).data('tanggal_lahir');
             const tanggal_ukur = $(this).data('tanggal_ukur');
@@ -464,6 +506,7 @@
             const rw = $(this).data('rw');
             const posyandu_id = $(this).data('posyandu_id');
             $('.id').val(id);
+            $('.nik').val(nik);
             $('.nama').val(nama);
             $('.tanggal_lahir').val(tanggal_lahir);
             $('.tanggal_ukur').val(tanggal_ukur);
@@ -485,6 +528,7 @@
 
         $('.btn-view').on('click', function() {
             const id = $(this).data('id');
+            const nik = $(this).data('nik');
             const nama = $(this).data('nama');
             const tanggal_lahir = $(this).data('tanggal_lahir');
             const tanggal_ukur = $(this).data('tanggal_ukur');
@@ -502,6 +546,7 @@
             const rw = $(this).data('rw');
             const posyandu_nama = $(this).data('posyandu_nama');
             $('.id').val(id);
+            $('.nik').val(nik);
             $('.nama').val(nama);
             $('.tanggal_lahir').val(tanggal_lahir);
             $('.tanggal_ukur').val(tanggal_ukur);

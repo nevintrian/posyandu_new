@@ -141,8 +141,14 @@ class Jadwal_ibu extends CI_Controller
         $new_date = $date->format('d-m-Y');
         $new_time = $date->format('H:i');
 
+        $telepon_array = [];
         foreach ($ibu_data as $ibu) {
-            $telepon = $this->convert_telepon($ibu->telepon);
+            array_push($telepon_array, $ibu->telepon);
+        }
+        $telepon_unique = array_unique($telepon_array);
+
+        foreach ($telepon_unique as $telepon) {
+            $telepon = $this->convert_telepon($telepon);
 
             $url = "https://graph.facebook.com/v13.0/110056228476958/messages";
 

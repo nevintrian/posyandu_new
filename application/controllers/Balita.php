@@ -57,6 +57,7 @@ class Balita extends CI_Controller
     public function save()
     {
         $data = array(
+            'nik' => $this->input->post('nik'),
             'nama' => $this->input->post('nama'),
             'tanggal_lahir' => $this->input->post('tanggal_lahir'),
             'tanggal_ukur' => $this->input->post('tanggal_ukur'),
@@ -81,6 +82,7 @@ class Balita extends CI_Controller
     public function update()
     {
         $data = array(
+            'nik' => $this->input->post('nik'),
             'nama' => $this->input->post('nama'),
             'tanggal_lahir' => $this->input->post('tanggal_lahir'),
             'tanggal_ukur' => $this->input->post('tanggal_ukur'),
@@ -109,9 +111,28 @@ class Balita extends CI_Controller
         redirect(site_url('balita'));
     }
 
+    public function cek_data_balita()
+    {
+        $id = $this->input->post('id');
+        $cek = $this->db->query("SELECT * FROM balita WHERE id='$id'")->row();
+        $data = array(
+            'nik' => $cek->nik,
+            'nama' => $cek->nama,
+            'tanggal_lahir' => $cek->tanggal_lahir,
+            'orangtua' => $cek->orangtua,
+            'telepon' => $cek->telepon,
+            'alamat' => $cek->alamat,
+            'rt' => $cek->rt,
+            'rw' => $cek->rw,
+            'posyandu_id' => $cek->posyandu_id,
+        );
+
+        echo json_encode($data);
+    }
+
     public function cetak_pdf($id)
     {
-        $pdf = new FPDF('L', 'mm', array(640, 350));
+        $pdf = new FPDF('L', 'mm', array(700, 350));
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 16);
         if (is_numeric($id)) {
@@ -122,6 +143,7 @@ class Balita extends CI_Controller
         $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(8, 6, 'No', 1, 0, 'C');
+        $pdf->Cell(60, 6, 'NIK', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Nama', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Tanggal Lahir', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Tanggal Ukur', 1, 0, 'C');
@@ -147,6 +169,7 @@ class Balita extends CI_Controller
         $no = 1;
         foreach ($barang as $data) {
             $pdf->Cell(8, 6, $no, 1, 0);
+            $pdf->Cell(60, 6, $data->nik, 1, 0);
             $pdf->Cell(45, 6, $data->nama, 1, 0);
             $pdf->Cell(45, 6, $data->tanggal_lahir, 1, 0);
             $pdf->Cell(45, 6, $data->tanggal_ukur, 1, 0);

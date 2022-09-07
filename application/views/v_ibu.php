@@ -34,8 +34,8 @@
                                         <thead>
                                             <tr>
                                                 <th style="width: 10px">No</th>
+                                                <th>NIK</th>
                                                 <th>Nama Ibu</th>
-                                                <th>Nama Suami</th>
                                                 <th>Alamat</th>
                                                 <th>Tanggal Daftar</th>
                                                 <th>Telepon</th>
@@ -49,15 +49,15 @@
                                             foreach ($ibu_data as $ibu) { ?>
                                                 <tr>
                                                     <td style="width: 10px"><?= $i ?></td>
+                                                    <td><?= $ibu->nik ?></td>
                                                     <td><?= $ibu->nama_ibu ?></td>
-                                                    <td><?= $ibu->nama_suami ?></td>
                                                     <td><?= $ibu->alamat ?></td>
                                                     <td><?= $ibu->tanggal_daftar ?></td>
                                                     <td><?= $ibu->telepon ?></td>
                                                     <td><?= $ibu->posyandu_nama ?></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $ibu->id; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-rt="<?= $ibu->rt; ?>" data-rw="<?= $ibu->rw; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-posyandu_nama="<?= $ibu->posyandu_nama; ?>" data-usia_ibu="<?= $ibu->usia_ibu; ?>" data-usia_anak_terakhir="<?= $ibu->usia_anak_terakhir; ?>" data-sistol="<?= $ibu->sistol; ?>" data-diastol="<?= $ibu->diastol; ?>" data-diastol_miring="<?= $ibu->diastol_miring; ?>" data-diastol_terlentang="<?= $ibu->diastol_terlentang; ?>" data-berat_badan="<?= $ibu->berat_badan; ?>" data-tinggi_badan="<?= $ibu->tinggi_badan; ?>"><i class="fa fa-eye"></i></a>
-                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $ibu->id; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-rt="<?= $ibu->rt; ?>" data-rw="<?= $ibu->rw; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-posyandu_id="<?= $ibu->posyandu_id; ?>" data-usia_ibu="<?= $ibu->usia_ibu; ?>" data-usia_anak_terakhir="<?= $ibu->usia_anak_terakhir; ?>" data-sistol="<?= $ibu->sistol; ?>" data-diastol="<?= $ibu->diastol; ?>" data-diastol_miring="<?= $ibu->diastol_miring; ?>" data-diastol_terlentang="<?= $ibu->diastol_terlentang; ?>" data-berat_badan="<?= $ibu->berat_badan; ?>" data-tinggi_badan="<?= $ibu->tinggi_badan; ?>"><i class="fa fa-marker"></i></a>
+                                                        <a href="#" class="btn btn-primary btn-view" data-id="<?= $ibu->id; ?>" data-nik="<?= $ibu->nik; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-rt="<?= $ibu->rt; ?>" data-rw="<?= $ibu->rw; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-terapi="<?= $ibu->terapi; ?>" data-nama_pemeriksa="<?= $ibu->nama_pemeriksa; ?>" data-posyandu_nama="<?= $ibu->posyandu_nama; ?>" data-usia_ibu="<?= $ibu->usia_ibu; ?>" data-usia_anak_terakhir="<?= $ibu->usia_anak_terakhir; ?>" data-sistol="<?= $ibu->sistol; ?>" data-diastol="<?= $ibu->diastol; ?>" data-diastol_miring="<?= $ibu->diastol_miring; ?>" data-diastol_terlentang="<?= $ibu->diastol_terlentang; ?>" data-berat_badan="<?= $ibu->berat_badan; ?>" data-tinggi_badan="<?= $ibu->tinggi_badan; ?>"><i class="fa fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-info btn-edit" data-id="<?= $ibu->id; ?>" data-nik="<?= $ibu->nik; ?>" data-nama_ibu="<?= $ibu->nama_ibu; ?>" data-nama_suami="<?= $ibu->nama_suami; ?>" data-alamat="<?= $ibu->alamat; ?>" data-rt="<?= $ibu->rt; ?>" data-rw="<?= $ibu->rw; ?>" data-tanggal_daftar="<?= $ibu->tanggal_daftar; ?>" data-umur_kehamilan="<?= $ibu->umur_kehamilan; ?>" data-telepon="<?= $ibu->telepon; ?>" data-keluhan="<?= $ibu->keluhan; ?>" data-terapi="<?= $ibu->terapi; ?>" data-nama_pemeriksa="<?= $ibu->nama_pemeriksa; ?>" data-posyandu_id="<?= $ibu->posyandu_id; ?>" data-usia_ibu="<?= $ibu->usia_ibu; ?>" data-usia_anak_terakhir="<?= $ibu->usia_anak_terakhir; ?>" data-sistol="<?= $ibu->sistol; ?>" data-diastol="<?= $ibu->diastol; ?>" data-diastol_miring="<?= $ibu->diastol_miring; ?>" data-diastol_terlentang="<?= $ibu->diastol_terlentang; ?>" data-berat_badan="<?= $ibu->berat_badan; ?>" data-tinggi_badan="<?= $ibu->tinggi_badan; ?>"><i class="fa fa-marker"></i></a>
                                                         <a href="#" class="btn btn-danger btn-delete" data-id="<?= $ibu->id; ?>"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -96,25 +96,39 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group" id="nik_lama">
+                        <label>NIK Pasien Lama (Opsional)</label>
+                        <select name="nik" id="data_nik" class="form-control" required>
+                            <option value="">-- Pilih NIK --</option>
+                            <?php foreach ($ibu_data as $ibu) : ?>
+                                <option value="<?= $ibu->id; ?>"><?= $ibu->nik; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group" id="nik_baru">
+                        <label>NIK</label>
+                        <input type="text" class="form-control nik" name="nik" placeholder="NIK" required>
+                    </div>
                     <div class="form-group">
                         <label>Nama Ibu</label>
-                        <input type="text" class="form-control" name="nama_ibu" placeholder="Nama Ibu" required>
+                        <input type="text" class="form-control nama_ibu" name="nama_ibu" placeholder="Nama Ibu" required>
                     </div>
                     <div class="form-group">
                         <label>Nama Suami</label>
-                        <input type="text" class="form-control" name="nama_suami" placeholder="Nama Suami" required>
+                        <input type="text" class="form-control nama_suami" name="nama_suami" placeholder="Nama Suami" required>
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" placeholder="Alamat" required>
+                        <input type="text" class="form-control alamat" name="alamat" placeholder="Alamat" required>
                     </div>
                     <div class="form-group">
                         <label>RT</label>
-                        <input type="text" class="form-control" name="rt" placeholder="RT" required>
+                        <input type="text" class="form-control rt" name="rt" placeholder="RT" required>
                     </div>
                     <div class="form-group">
                         <label>RW</label>
-                        <input type="text" class="form-control" name="rw" placeholder="RW" required>
+                        <input type="text" class="form-control rw" name="rw" placeholder="RW" required>
                     </div>
                     <div class="form-group">
                         <label>Tanggal Daftar</label>
@@ -161,15 +175,23 @@
                         <input type="text" class="form-control" name="keluhan" placeholder="Keluhan" required>
                     </div>
                     <div class="form-group">
+                        <label>Terapi</label>
+                        <input type="text" class="form-control" name="terapi" placeholder="Terapi" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Pemeriksa</label>
+                        <input type="text" class="form-control" name="nama_pemeriksa" placeholder="Nama Pemeriksa" required>
+                    </div>
+                    <div class="form-group">
                         <label>Telepon</label>
-                        <input type="number" class="form-control" name="telepon" placeholder="Telepon" required>
+                        <input type="number" class="form-control telepon" name="telepon" placeholder="Telepon" required>
                     </div>
                     <?php
                     if ($this->session->userdata('level') != 'kader') {
                     ?>
                         <div class="form-group">
                             <label>Posyandu</label>
-                            <select name="posyandu_id" class="form-control" required>
+                            <select name="posyandu_id" class="form-control posyandu_id" required>
                                 <option value="">-- Pilih Posyandu --</option>
                                 <?php foreach ($posyandu_data as $posyandu) : ?>
                                     <option value="<?= $posyandu->id; ?>"><?= $posyandu->nama; ?></option>
@@ -206,6 +228,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group">
+                        <label>NIK</label>
+                        <input type="text" class="form-control nik" name="nik" placeholder="NIK" required>
+                    </div>
                     <div class="form-group">
                         <label>Nama Ibu</label>
                         <input type="text" class="form-control nama_ibu" name="nama_ibu" placeholder="Nama Ibu" required>
@@ -271,6 +297,14 @@
                         <input type="text" class="form-control keluhan" name="keluhan" placeholder="Keluhan" required>
                     </div>
                     <div class="form-group">
+                        <label>Terapi</label>
+                        <input type="text" class="form-control terapi" name="terapi" placeholder="Terapi" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Pemeriksa</label>
+                        <input type="text" class="form-control nama_pemeriksa" name="nama_pemeriksa" placeholder="Nama Pemeriksa" required>
+                    </div>
+                    <div class="form-group">
                         <label>Telepon</label>
                         <input type="number" class="form-control telepon" name="telepon" placeholder="Telepon" required>
                     </div>
@@ -317,6 +351,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group">
+                        <label>NIK</label>
+                        <input type="text" class="form-control nik" name="nik" placeholder="NIK" disabled>
+                    </div>
                     <div class="form-group">
                         <label>Nama Ibu</label>
                         <input type="text" class="form-control nama_ibu" name="nama_ibu" placeholder="Nama Ibu" disabled>
@@ -382,6 +420,14 @@
                         <input type="text" class="form-control keluhan" name="keluhan" placeholder="Keluhan" disabled>
                     </div>
                     <div class="form-group">
+                        <label>Terapi</label>
+                        <input type="text" class="form-control terapi" name="terapi" placeholder="Terapi" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Pemeriksa</label>
+                        <input type="text" class="form-control nama_pemeriksa" name="nama_pemeriksa" placeholder="Nama Pemeriksa" disabled>
+                    </div>
+                    <div class="form-group">
                         <label>Telepon</label>
                         <input type="number" class="form-control telepon" name="telepon" placeholder="Telepon" disabled>
                     </div>
@@ -428,9 +474,30 @@
 <script src="<?php echo base_url('templates/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 <script>
     $(document).ready(function() {
+        $('#data_nik').change(function() {
+            var id = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url('ibu/cek_data_ibu') ?>',
+                Cache: false,
+                dataType: "json",
+                data: 'id=' + id,
+                success: function(resp) {
+                    $('.nik').val(resp.nik);
+                    $('.nama_ibu').val(resp.nama_ibu);
+                    $('.nama_suami').val(resp.nama_suami);
+                    $('.alamat').val(resp.alamat);
+                    $('.rt').val(resp.rt);
+                    $('.rw').val(resp.rw);
+                    $('.telepon').val(resp.telepon);
+                    $('.posyandu_id').val(resp.posyandu_id);
+                }
+            });
+        });
         $('#datatables').DataTable();
         $('.btn-edit').on('click', function() {
             const id = $(this).data('id');
+            const nik = $(this).data('nik');
             const nama_ibu = $(this).data('nama_ibu');
             const nama_suami = $(this).data('nama_suami');
             const alamat = $(this).data('alamat');
@@ -439,6 +506,8 @@
             const tanggal_daftar = $(this).data('tanggal_daftar');
             const umur_kehamilan = $(this).data('umur_kehamilan');
             const keluhan = $(this).data('keluhan');
+            const terapi = $(this).data('terapi');
+            const nama_pemeriksa = $(this).data('nama_pemeriksa');
             const telepon = $(this).data('telepon');
             const usia_anak_terakhir = $(this).data('usia_anak_terakhir');
             const sistol = $(this).data('sistol');
@@ -450,6 +519,7 @@
             const usia_ibu = $(this).data('usia_ibu');
             const posyandu_id = $(this).data('posyandu_id');
             $('.id').val(id);
+            $('.nik').val(nik);
             $('.nama_ibu').val(nama_ibu);
             $('.nama_suami').val(nama_suami);
             $('.alamat').val(alamat);
@@ -458,6 +528,8 @@
             $('.tanggal_daftar').val(tanggal_daftar);
             $('.umur_kehamilan').val(umur_kehamilan);
             $('.keluhan').val(keluhan);
+            $('.terapi').val(terapi);
+            $('.nama_pemeriksa').val(nama_pemeriksa);
             $('.telepon').val(telepon);
             $('.usia_anak_terakhir').val(usia_anak_terakhir);
             $('.sistol').val(sistol);
@@ -473,6 +545,7 @@
 
         $('.btn-view').on('click', function() {
             const id = $(this).data('id');
+            const nik = $(this).data('nik');
             const nama_ibu = $(this).data('nama_ibu');
             const nama_suami = $(this).data('nama_suami');
             const alamat = $(this).data('alamat');
@@ -481,6 +554,8 @@
             const tanggal_daftar = $(this).data('tanggal_daftar');
             const umur_kehamilan = $(this).data('umur_kehamilan');
             const keluhan = $(this).data('keluhan');
+            const terapi = $(this).data('terapi');
+            const nama_pemeriksa = $(this).data('nama_pemeriksa');
             const telepon = $(this).data('telepon');
             const usia_anak_terakhir = $(this).data('usia_anak_terakhir');
             const sistol = $(this).data('sistol');
@@ -492,6 +567,7 @@
             const usia_ibu = $(this).data('usia_ibu');
             const posyandu_nama = $(this).data('posyandu_nama');
             $('.id').val(id);
+            $('.nik').val(nik);
             $('.nama_ibu').val(nama_ibu);
             $('.nama_suami').val(nama_suami);
             $('.alamat').val(alamat);
@@ -499,7 +575,9 @@
             $('.rw').val(rw);
             $('.tanggal_daftar').val(tanggal_daftar);
             $('.umur_kehamilan').val(umur_kehamilan);
+            $('.terapi').val(terapi);
             $('.keluhan').val(keluhan);
+            $('.nama_pemeriksa').val(nama_pemeriksa);
             $('.telepon').val(telepon);
             $('.usia_anak_terakhir').val(usia_anak_terakhir);
             $('.sistol').val(sistol);

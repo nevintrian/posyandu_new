@@ -56,6 +56,7 @@ class Ibu extends CI_Controller
     public function save()
     {
         $data = array(
+            'nik' => $this->input->post('nik'),
             'nama_ibu' => $this->input->post('nama_ibu'),
             'nama_suami' => $this->input->post('nama_suami'),
             'alamat' => $this->input->post('alamat'),
@@ -72,6 +73,8 @@ class Ibu extends CI_Controller
             'berat_badan' => $this->input->post('berat_badan'),
             'tinggi_badan' => $this->input->post('tinggi_badan'),
             'keluhan' => $this->input->post('keluhan'),
+            'terapi' => $this->input->post('terapi'),
+            'nama_pemeriksa' => $this->input->post('nama_pemeriksa'),
             'telepon' => $this->input->post('telepon'),
             'posyandu_id' => $this->input->post('posyandu_id'),
         );
@@ -82,6 +85,7 @@ class Ibu extends CI_Controller
     public function update()
     {
         $data = array(
+            'nik' => $this->input->post('nik'),
             'nama_ibu' => $this->input->post('nama_ibu'),
             'nama_suami' => $this->input->post('nama_suami'),
             'alamat' => $this->input->post('alamat'),
@@ -98,6 +102,8 @@ class Ibu extends CI_Controller
             'berat_badan' => $this->input->post('berat_badan'),
             'tinggi_badan' => $this->input->post('tinggi_badan'),
             'keluhan' => $this->input->post('keluhan'),
+            'terapi' => $this->input->post('terapi'),
+            'nama_pemeriksa' => $this->input->post('nama_pemeriksa'),
             'telepon' => $this->input->post('telepon'),
             'posyandu_id' => $this->input->post('posyandu_id'),
         );
@@ -112,9 +118,27 @@ class Ibu extends CI_Controller
         redirect(site_url('ibu'));
     }
 
+    public function cek_data_ibu()
+    {
+        $id = $this->input->post('id');
+        $cek = $this->db->query("SELECT * FROM ibu WHERE id='$id'")->row();
+        $data = array(
+            'nik' => $cek->nik,
+            'nama_ibu' => $cek->nama_ibu,
+            'nama_suami' => $cek->nama_suami,
+            'alamat' => $cek->alamat,
+            'rt' => $cek->rt,
+            'rw' => $cek->rw,
+            'telepon' => $cek->telepon,
+            'posyandu_id' => $cek->posyandu_id,
+        );
+
+        echo json_encode($data);
+    }
+
     public function cetak_pdf($id)
     {
-        $pdf = new FPDF('L', 'mm',  array(790, 350));
+        $pdf = new FPDF('L', 'mm',  array(940, 350));
         $pdf->AddPage();
         $pdf->SetFont('Arial', 'B', 16);
         if (is_numeric($id)) {
@@ -125,6 +149,7 @@ class Ibu extends CI_Controller
         $pdf->Cell(10, 7, '', 0, 1);
         $pdf->SetFont('Arial', 'B', 10);
         $pdf->Cell(8, 6, 'No', 1, 0, 'C');
+        $pdf->Cell(60, 6, 'NIK', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Nama Ibu', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Nama Suami', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Alamat', 1, 0, 'C');
@@ -141,6 +166,8 @@ class Ibu extends CI_Controller
         $pdf->Cell(45, 6, 'Berat Badan (kg)', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Tinggi Badan (cm)', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Keluhan', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Terapi', 1, 0, 'C');
+        $pdf->Cell(45, 6, 'Nama Pemeriksa', 1, 0, 'C');
         $pdf->Cell(40, 6, 'Telepon', 1, 0, 'C');
         $pdf->Cell(45, 6, 'Posyandu', 1, 1, 'C');
         $pdf->SetFont('Arial', '', 10);
@@ -152,6 +179,7 @@ class Ibu extends CI_Controller
         $no = 1;
         foreach ($barang as $data) {
             $pdf->Cell(8, 6, $no, 1, 0);
+            $pdf->Cell(60, 6, $data->nik, 1, 0);
             $pdf->Cell(45, 6, $data->nama_ibu, 1, 0);
             $pdf->Cell(45, 6, $data->nama_suami, 1, 0);
             $pdf->Cell(45, 6, $data->alamat, 1, 0);
@@ -168,6 +196,8 @@ class Ibu extends CI_Controller
             $pdf->Cell(45, 6, $data->berat_badan, 1, 0);
             $pdf->Cell(45, 6, $data->tinggi_badan, 1, 0);
             $pdf->Cell(45, 6, $data->keluhan, 1, 0);
+            $pdf->Cell(45, 6, $data->terapi, 1, 0);
+            $pdf->Cell(45, 6, $data->nama_pemeriksa, 1, 0);
             $pdf->Cell(40, 6, $data->telepon, 1, 0);
             $pdf->Cell(45, 6, $data->posyandu_nama, 1, 1);
             $no++;

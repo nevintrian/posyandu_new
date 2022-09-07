@@ -142,8 +142,14 @@ class Jadwal_balita extends CI_Controller
         $new_date = $date->format('d-m-Y');
         $new_time = $date->format('H:i');
 
+        $telepon_array = [];
         foreach ($balita_data as $balita) {
-            $telepon = $this->convert_telepon($balita->telepon);
+            array_push($telepon_array, $balita->telepon);
+        }
+        $telepon_unique = array_unique($telepon_array);
+
+        foreach ($telepon_unique as $telepon) {
+            $telepon = $this->convert_telepon($telepon);
 
             $url = "https://graph.facebook.com/v13.0/110056228476958/messages";
 
